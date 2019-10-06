@@ -1,0 +1,59 @@
+<div class="container" *ngIf="auth.user$ | async as user">
+    <a href="javascript:history.back()" class="icon-back">
+        <img src="../../../../assets/img/oficons/back.png" alt="back" />
+    </a>
+
+    <app-user-menu></app-user-menu>
+
+    <div class="container content">
+        <!-- DATOS DE USUARIO -->
+        <div class="row" id="datosUsuario">
+            <div class="col s12" id="fotoPerfil">
+                <img src="{{ user.photoURL }}" alt="" />
+            </div>
+            <div class="col s12" id="datos">
+                <ul>
+                    <li id="nombre">{{ user.displayName }}</li>
+                    <li id="email">{{ user.email }}</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- OFERTAS -->
+        <div class="row" id="misOfertas">
+            <div class="col s12">
+                <ul class="ofertaList">
+                    <li *ngFor="let item of ofertas" class="ofertaItem">
+                        <div class="col s3 center" [routerLink]="['/oferta', item.id]">
+                            <div class="oferImg">
+                                <img [src]="item.oferta.oImagen" alt="" />
+                            </div>
+                        </div>
+                        <div class="col s7" [routerLink]="['/oferta', item.id]">
+                            <span class="nombreOferta">{{ item.oferta.oNombre }}</span>
+                            <br />
+                            <span class="caducidad">{{ item.cad.toLocaleDateString() }}</span>
+                            <br>
+                            <span class="red-text" *ngIf="item.canjeado">Canjeado</span>
+                        </div>
+                        <div class="col s2 center verCode" *ngIf="!item.canjeado" [routerLink]="['/code', item.id]">
+                            <i class="fas fa-qrcode"></i>
+                        </div>
+                        <div class="col s2 center verCode" *ngIf="item.canjeado">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                    </li>
+                    <br />
+                </ul>
+            </div>
+            <div *ngIf="ofertas.length == 0" class="col s12 valign-wrapper center">
+                <div>
+                    <h4>AUN NO TIENES OFERTAS</h4><br>
+                    <p>Explora el mapa <i class="fas fa-map-marked-alt"></i> para ver ofertas en tu ciudad</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>
+<app-navbar></app-navbar>

@@ -1,0 +1,36 @@
+<div class="row tit">
+    <div class="col s12">
+        <h3 class="tituloEditor">TEXTO</h3>
+    </div>
+</div>
+
+<app-text-box></app-text-box>
+
+<div id="cajaTextos" class="box row">
+
+    <div class="crear col s12" (click)="texto()">
+        <div id="texto">TEXTO</div>
+        <i class="fa fa-plus-circle" aria-hidden="true"></i>
+    </div>
+
+    <div class="crear col s12" (click)="h1()">
+        <div id="texto" class="h1">TÍTULO</div>
+        <i class="fa fa-plus-circle" aria-hidden="true"></i>
+    </div>
+
+    <div class="crear col s12" (click)="h2()">
+        <div id="texto " class="h2">SUBTÍTULO</div>
+        <i class="fa fa-plus-circle" aria-hidden="true"></i>
+    </div>
+
+    <div class="crear col s12" (click)="h3()">
+        <div id="texto " class="h3">GRANDE</div>
+        <i class="fa fa-plus-circle" aria-hidden="true"></i>
+    </div>
+
+    <div class="crear col s12" (click)="legend()">
+        <div id="texto" class="legend">Leyenda</div>
+        <i class="fa fa-plus-circle" aria-hidden="true"></i>
+    </div>
+
+</div>

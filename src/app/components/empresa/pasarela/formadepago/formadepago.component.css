@@ -1,0 +1,33 @@
+.plan {
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, .3);
+    border-radius: 2em;
+    position: relative;
+    left: 45%;
+    transform: translateX(-50%);
+}
+
+.opcionTarjeta {
+    margin: 0 0 4em
+}
+
+.owner {
+    line-height: 1;
+    position: relative;
+    bottom: 1em;
+}
+
+[type="radio"]:not(:checked),
+[type="radio"]:checked {
+    left: -1em;
+    opacity: 1;
+}
+
+@media screen and (min-width: 700px) {
+    #f-pago {
+        display: flex;
+        flex-direction: row;
+    }
+    /* .oferForm {
+        margin-left: 3em;
+    } */
+}

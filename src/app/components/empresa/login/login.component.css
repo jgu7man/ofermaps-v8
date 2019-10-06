@@ -1,0 +1,11 @@
+.login {
+    background: url(../../../../assets/img/mapbackground65.png);
+    background-size: cover;
+    height: 100vh;
+    background-position: 50% 50%;
+}
+
+.loginExtras {
+    position: relative;
+    top: -3em;
+}

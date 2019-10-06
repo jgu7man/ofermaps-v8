@@ -1,0 +1,133 @@
+.container {
+    padding: 5%;
+}
+
+.icon-back {
+    position: absolute;
+}
+
+.row {
+    margin-bottom: 0;
+}
+
+.types {
+    margin-top: 20px
+}
+
+form {
+    padding-bottom: 3em;
+}
+
+.list-drop-close {
+    overflow: hidden;
+}
+
+.list-drop-open {
+    height: 180px;
+    overflow: auto !important;
+}
+
+
+/* TIPOS DE OFERTA */
+
+.cantDcto {
+    max-width: 50%;
+    display: table-footer-group;
+    margin-left: 5vw !important;
+}
+
+.iconDcto {
+    position: relative;
+    top: -2em;
+    margin-left: 85%;
+}
+
+.cantBono {
+    position: relative !important;
+    max-width: 50%;
+    margin-left: 5vw !important;
+    top: -3vh
+}
+
+.iconBono {
+    position: relative;
+    top: 1em;
+}
+
+.producto {
+    float: right !important;
+    max-width: 60% !important;
+}
+
+
+/* CONDICIONES DE OFERTA */
+
+.conds-input {
+    display: inline-block;
+    box-shadow: inset 1px 1px 3px rgba(0, 0, 0, .3);
+    border-radius: 2em;
+    padding: 5% !important;
+}
+
+.conds-input .cond {
+    padding: 0.75em;
+    margin: 0.25em 0 0.1em;
+    display: inline-block;
+    font-size: 85%;
+    border: 1px solid black;
+    transition: all 0.1s ease-in-out;
+    border-radius: 5px;
+}
+
+.conds-input .cond:hover {
+    background-color: black;
+    color: white;
+}
+
+.conds-input .cond .del::after {
+    content: 'x';
+    font-weight: bold;
+    transform: scale(1.4);
+    margin-left: 0.75em;
+    display: none;
+}
+
+.conds-input .cond .del::after {
+    display: inline-block;
+}
+
+.conds-input .main-input {
+    border: 0;
+    outline: 0;
+    padding: 0.25em;
+}
+
+.guardar {
+    border-radius: 2em;
+    padding: 5px;
+    width: 100px;
+    text-align: center;
+    box-shadow: 3px 3px 3px #ccc;
+    position: relative;
+}
+
+.ads {
+    padding: 1em;
+    background: #c15d2d;
+    color: white;
+    border: dashed;
+}
+
+.ads a {
+    color: black !important;
+    font-weight: 700 !important
+}
+
+@media screen and (min-width: 700px) {
+    .cantDcto {
+        margin-left: 2vw !important;
+    }
+    .cantBono {
+        margin-left: 1vw !important;
+    }
+}

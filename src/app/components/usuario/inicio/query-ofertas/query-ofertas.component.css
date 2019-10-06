@@ -1,0 +1,17 @@
+.ofertasList {
+    display: flex;
+    flex-flow: row wrap;
+    width: 90vw;
+    top: 8vh;
+    position: relative;
+    margin: auto;
+}
+
+.ofertaImg {
+    width: 45%;
+    margin: 2.5%;
+}
+
+.ofertaImg img {
+    width: 100%;
+}

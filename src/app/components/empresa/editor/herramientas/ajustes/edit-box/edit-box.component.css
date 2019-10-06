@@ -1,0 +1,18 @@
+.num {
+    height: 15px !important;
+    position: relative;
+    top: 1em;
+    color: #e3e3e3;
+    width: 50% !important;
+}
+
+.px {
+    top: 1em;
+    position: relative;
+    color: #e3e3e3;
+}
+
+.lbl {
+    position: relative;
+    top: -1em;
+}

@@ -1,0 +1,64 @@
+<app-backbar></app-backbar>
+<div id="vista">
+    <div class="container content">
+        <div class="row" id="datosEmpresa">
+            <div class="col s12" id="fotoPerfil">
+                <img [src]="empresa.nAvatar" alt="" />
+            </div>
+            <div class="col s12 datos center">
+                <ul>
+                    <li class="nombre">
+                        {{ empresa.nNegocio }}
+                    </li>
+                    <li class="dato">
+                        <a [href]="empresa.nWebsite">
+                            {{ empresa.nWebsite }}
+                        </a>
+                    </li>
+                    <li class="dato">
+                        <a href="mailto:{{ empresa.nCorreo }}">
+                            {{ empresa.nCorreo }}
+                        </a>
+                    </li>
+                    <li class="dato">
+                        <a href="tel:{{ empresa.nTelefono }}">
+                            {{ empresa.nTelefono }}
+                        </a>
+                    </li>
+                </ul>
+                <hr />
+                <p>Suscriptores: {{ suscriptores }}</p>
+            </div>
+        </div>
+        <div class="row datos" id="ubicacionEmpresa">
+            <h5>Ubicaciones</h5>
+            <div class="row" id="ubicaiones" *ngFor="let ubicacion of ubicaciones">
+                <div class="col s12 m6">
+                    <ul>
+                        <li class="nombre">Nombre de sucursal</li>
+                        <li>{{ ubicacion.dCalleynum }}, {{ ubicacion.dColonia }}</li>
+                        <li>
+                            {{ ubicacion.dCiudad }}, {{ ubicacion.dEstado }}, {{ ubicacion.dPais }}
+                        </li>
+                    </ul>
+                </div>
+                <div class="mapita col s12 m6">
+                    <agm-map [latitude]="ubicacion.lat" [longitude]="ubicacion.long" [zoom]="17">
+                        <agm-marker [latitude]="ubicacion.lat" [longitude]="ubicacion.long" [iconUrl]="iconMap.iconUrl">
+                        </agm-marker>
+                    </agm-map>
+                </div>
+            </div>
+        </div>
+        <div class="row datos" id="ofertasEmpresa">
+            <h5>Ofertas</h5>
+            <div class="row" id="ofertas" *ngFor="let oferta of ofertas">
+                <div class="oferta col s6 m4 l3" [routerLink]="['/oferta', oferta.idOfer]">
+                    <img [src]="oferta.data.oImagen" [alt]="oferta.data.oNombre" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-navbar></app-navbar>
+<app-loading class="overlay"></app-loading>

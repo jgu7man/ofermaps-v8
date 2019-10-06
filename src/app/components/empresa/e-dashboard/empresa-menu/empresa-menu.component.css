@@ -1,0 +1,11 @@
+.fixed-action-btn {
+    bottom: 63px !important;
+}
+
+.btn-floating {
+    background: linear-gradient( -30deg, #c1272d, #c56a3a);
+}
+
+.menu-btn {
+    background: #C1272D
+}

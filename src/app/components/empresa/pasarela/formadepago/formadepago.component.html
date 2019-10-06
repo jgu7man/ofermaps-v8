@@ -1,0 +1,61 @@
+<app-e-navbar></app-e-navbar>
+<div class="container contenido" id="f-pago">
+    <div class="row plan container">
+        <div class="col s12">
+            <div class="center">
+                <h4>Vas a contratar el plan {{ plan.nombre }}</h4>
+                <span>¡Excelente eleccion!</span>
+            </div>
+            <p>Estos son los beneficios que obtendrás:</p>
+            <ul class="beneficios">
+                <li class="ben" *ngFor="let item of plan.beneficios">{{ item.concepto }}</li>
+            </ul>
+        </div>
+    </div>
+
+    <form class="oferForm" action="#" name="formadepago" #formadepago="ngForm" (ngSubmit)="onSubmit()" method="POST" id="formadepagoform" onsubmit="return false">
+        <h4 class="center-align">Crédito o débito</h4>
+        <div class="row">
+            <p class="opcionTarjeta" *ngFor="let item of tarjeta">
+                <input type="radio" name="formadepago" [(ngModel)]="forma.formadepago" value="card" id="card" checked />
+                <label for="card">
+                    <div class="col s2">
+                        <img src=" {{item.tEmisor}} " width="30px" alt="card" />
+                    </div>
+                    <div class="col s10 owner" >
+                        <p> {{item.tNombre}} </p>
+                        <p id="hidenum">**** {{item.tNumero.slice(12)}} </p>
+                    </div>
+                </label>
+            </p>
+        </div>
+        <div class="row">
+            <div class="col s12 right">
+                <p [routerLink]="['/empresa/pasarela/regtarjeta']" class="btn-secondary boton">AGREGAR</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <h4 class="center-align">PayPal</h4>
+            <p>
+                <input type="radio" name="formadepago" [(ngModel)]="forma.formadepago" id="paypal" value="paypal" />
+                <label for="paypal">
+                    <div class="col s2">
+                        <img src="../../../../assets/img/oficons/paypal-black.png"  width="30px" alt="paypal" />
+                    </div>
+                    <div class="col s10">
+                        <p>jgu7man@gmail.com</p>
+                        <br />
+                    </div>
+                </label>
+            </p>
+
+        </div>
+        <div class="row">
+            <div class="col s12">
+                <p class="boton btn-secondary">CONECTAR</p>
+            </div>
+        </div>
+        <input type="submit" value="CONFIRMAR" class="boton btn-primary" id="confirmar" />
+    </form>
+</div>

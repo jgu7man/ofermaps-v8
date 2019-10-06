@@ -1,0 +1,31 @@
+<div class="homeSlider" [ngStyle]="{'background-image': 'url('+zone+')'}">
+    <div class="row">
+        <div class="col s12 center" id="logoPrincipal">
+            <img src="../../../assets/img/LogoJ.svg" alt="Logo">
+        </div>
+    </div>
+
+    <div class="container hSlider">
+        <div class="row route-container" [@routeAnimation]="getPage(page)">
+
+            <router-outlet #page="outlet"></router-outlet>
+
+        </div>
+    </div>
+    <div class="container menuSlider">
+        <div class="row">
+            <div class="menu-buckets">
+                <div [routerLink]="['/slider/slide1']" routerLinkActive="buck-active" class="buck buck1 buck-active"></div>
+                <div [routerLink]="['/slider/slide2']" routerLinkActive="buck-active" class="buck buck2"></div>
+                <div [routerLink]="['/slider/slide3']" routerLinkActive="buck-active" class="buck buck3"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12">
+                <div (click)="next()" class="boton btn-next" id="next">
+                    <img src="../../../../assets/img/oficons/Next-icon.png" alt="next">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

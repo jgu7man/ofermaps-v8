@@ -1,0 +1,44 @@
+#cuadro {
+    position: relative;
+    width: 75px;
+    height: 75px;
+    background: #ccc;
+    margin: auto;
+}
+
+#cuadroBorde {
+    position: relative;
+    width: 75px;
+    height: 75px;
+    background: none;
+    margin: auto;
+    border: solid 2px #ccc;
+}
+
+#cuadroRadius {
+    position: relative;
+    width: 75px;
+    height: 75px;
+    background: #ccc;
+    border-radius: .5em;
+    margin: auto;
+}
+
+#circulo {
+    position: relative;
+    width: 75px;
+    height: 75px;
+    background: #ccc;
+    border-radius: 50%;
+    margin: auto;
+}
+
+#circuloRadius {
+    position: relative;
+    width: 75px;
+    height: 75px;
+    background: transparent;
+    border: solid 2px #ccc;
+    border-radius: 50%;
+    margin: auto;
+}

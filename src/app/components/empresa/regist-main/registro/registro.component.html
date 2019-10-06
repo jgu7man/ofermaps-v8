@@ -1,0 +1,113 @@
+<div class="container registro">
+    <a href="javascript:history.back()" class="icon-back">
+        <img src="../../../../assets/img/oficons/back.png" alt="back" />
+    </a>
+    <div class="title">
+        <h4 class="registroTitle title center">REGISTRO</h4>
+        <p class="instr">
+            Registra tu empresa o negocio para publicar ofertas y así conseguir cientos de clientes
+        </p>
+        <form class="oferForm" name="registro" #registro="ngForm" (ngSubmit)="onSubmit()" action="#" method="POST" id="registro" onsubmit="return false">
+            <div class="row">
+                <div class="input-field col s12">
+                    <input type="email" name="email" placeholder="Email" id="email" class="ofinput" required #email="ngModel" [(ngModel)]="adminEmpresa.email" />
+                    <span class="alertForm" *ngIf="email.invalid && (email.dirty || email.touched)">
+                      El correo es necesario
+                    </span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field col s12">
+                    <input type="email" name="confemail" placeholder="Confirmar Email" id="confemail" class="ofinput" required #confEmail="ngModel" [(ngModel)]="adminEmpresa.confEmail" compare="email" />
+                    <div *ngIf="confEmail.invalid && (confEmail.dirty || confEmail.touched)">
+                        <span class="alertForm" *ngIf="confEmail.errors['required']">
+              Es necesario confirmar Email
+            </span>
+                        <span class="alertForm" *ngIf="confEmail.errors['compare']">
+              Las direcciones de correo no coinciden
+            </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field col s12">
+                    <input type="password" name="contrasena" placeholder="Contraseña" id="contrasena" class="ofinput" required #contrasena="ngModel" [(ngModel)]="adminEmpresa.contrasena" minlength="5" maxlength="12" data-length="12" PwdToggle />
+                    <span>Min=5 | Max=12</span>
+                    <div *ngIf="contrasena.invalid && (contrasena.dirty || contrasena.touched)">
+                        <span class="alertForm" *ngIf="contrasena.errors['required']">
+                          La constraeña es necesaria
+                        </span>
+                        <span class="alertForm" *ngIf="contrasena.errors['minlength']">
+                          Mínimo 5 caracteres
+                        </span>
+                    </div>
+                </div>
+
+                <div class="input-field col s12" style="height: 50px">
+                    <input type="password" name="confcontrasena" placeholder="Confrimar contraseña" id="confcontrasena" class="ofinput" required #confContrasena="ngModel" [(ngModel)]="adminEmpresa.confContrasena" compare="constrasena" PwdToggle data-length="12" />
+                    <div *ngIf="
+              confContrasena.invalid &&
+              (confContrasena.dirty || confContrasena.touched)
+            ">
+                        <span class="alertForm" *ngIf="confContrasena.errors['required']">
+              Confirma la constraseña
+            </span>
+                        <span class="alertForm" *ngIf="confContrasena.errors['compare']">
+              Las contraseñas no coinciden
+            </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row condciones">
+                <p class="noMargin" style="height: 30px;">
+                    <input type="checkbox" name="tyc" id="tyc" required class="ofinput" #tyc="ngModel" [(ngModel)]="adminEmpresa.tyc" />
+                    <label for="tyc">Acepto los <a href="#">Términos y condiciones</a></label
+          >
+        </p>
+        <p class="noMargin">
+          <input
+            type="checkbox"
+            name="pdp"
+            id="pdp"
+            class="ofinput"
+            required
+            #pdp="ngModel"
+            [(ngModel)]="adminEmpresa.pdp"
+          />
+          <label for="pdp"
+            >He leído la <a href="#">Política de privacidad</a></label
+          >
+        </p>
+        <div *ngIf="tyc.invalid && (tyc.dirty || tyc.touched)">
+          <span class="alertForm" *ngIf="tyc.errors['required']">
+            Debes aceptar los términos y condiciones
+          </span>
+        </div>
+
+        <div *ngIf="pdp.invalid && (pdp.dirty || pdp.touched)">
+          <span class="alertForm" *ngIf="pdp.errors['required']">
+            Debes aceptar la política de privacidad
+          </span>
+        </div>
+      </div>
+
+      <input
+        type="submit"
+        name="submit"
+        id="registrar"
+        class="boton btn-primary"
+        [disabled]="!registro.form.valid"
+      />
+    </form>
+    <p
+      class="boton btn-secondary"
+      [routerLink]="['../login']"
+      routerLinkActive="router-link-active"
+    >
+      INICIAR SESIÓN
+    </p>
+  </div>
+</div>

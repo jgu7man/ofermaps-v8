@@ -1,0 +1,17 @@
+<app-backbar></app-backbar>
+<div class="row" id="editor" style="margin: 0">
+    <div class="col s3 herramientas">
+        <app-herramientas></app-herramientas>
+
+    </div>
+    <div class="col s9">
+        <app-window [data]="design.html"></app-window>
+    </div>
+
+    <app-preview style="display: none"></app-preview>
+
+    <div id="fullscreen" (click)="fullScreen()">
+        <i class="fas fa-expand"></i>
+    </div>
+</div>
+<app-loading class="overlay" style="display: none"></app-loading>

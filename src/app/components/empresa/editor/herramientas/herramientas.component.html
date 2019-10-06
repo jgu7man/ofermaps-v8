@@ -1,0 +1,21 @@
+<div class="row menu">
+    <div class="col s12 valign-wrapper" id="menuEditor">
+        <div class="icon menuIconEditor">
+            <i class="fas fa-file-image" [routerLink]="['./fondo']" routerLinkActive="activo"></i>
+        </div>
+        <div class="icon menuIconEditor">
+            <i class="fas fa-font" [routerLink]="['./texto']" routerLinkActive="activo"></i>
+        </div>
+        <div class="icon menuIconEditor">
+            <i class="fas fa-image" [routerLink]="['./imagen']" routerLinkActive="activo"></i>
+        </div>
+        <div class="icon menuIconEditor">
+            <i class="fas fa-shapes" [routerLink]="['./figuras']" routerLinkActive="activo"></i>
+        </div>
+        <div class="icon menuIconEditor" (click)="getScreen()">
+            <i class="fas fa-external-link-alt"></i>
+        </div>
+    </div>
+</div>
+
+<router-outlet></router-outlet>

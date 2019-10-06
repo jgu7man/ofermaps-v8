@@ -1,0 +1,18 @@
+<div class="container" id="textArea" *ngIf="auth.user$ | async as user">
+    <div class="row">
+        <div class="col s12 center">
+            <div id="perfil" [routerLink]="['/usuario']">
+                <img src="{{ user.photoURL }}" alt="" />
+            </div>
+
+            <div id="searchBar">
+                <input type="text" name="buscar" id="buscar" [(ngModel)]="word" (keyup.enter)="onSearch()" />
+                <button><i class="fas fa-search"></i></button>
+            </div>
+
+            <div id="viewMode" (click)="viewMode()">
+                <i id="modeIcon" class="fas fa-th-list"></i>
+            </div>
+        </div>
+    </div>
+</div>

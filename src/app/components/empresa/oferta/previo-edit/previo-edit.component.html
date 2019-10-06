@@ -1,0 +1,75 @@
+<div class="container">
+
+    <div class="row">
+        <div class="col s12">
+            <h5 class="center">REVISA PARA EDITAR OFERTA</h5>
+        </div>
+    </div>
+
+    <div class="row">
+
+        <div class="col s12">
+            <h5 class="name">{{oferta.oNombre}}</h5>
+        </div>
+
+        <div class="col s6 imgContainer">
+            <div class="imgPreview">
+                <img src="{{oferta.oImagen}}" alt="">
+            </div>
+        </div>
+
+        <div class="col s6">
+            <ul class="oferDatos">
+                <li>{{oferta.oTipo}}</li>
+                <li>
+                    <span *ngIf="oferta.oTipo == 'Bono'">$</span> {{oferta.oCantidad}}
+                    <span *ngIf="oferta.oTipo == 'Descuento'">%</span>
+                    <span *ngIf="oferta.oTipo.includes('equivalencia')">
+                      <i class="fas fa-times"></i>
+                      {{oferta.oCantAux}}
+                    </span>
+                </li>
+                <li>en: {{oferta.oProdserv}}</li>
+                <li>Caducidad: {{caducidad.toLocaleDateString()}}</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="row">
+
+        <div class="col s12">
+            <h6 class="center">Condiciones</h6>
+            <ul>
+                <li *ngFor="let i of oferta.oCondiciones">{{i}}</li>
+            </ul>
+        </div>
+
+        <div class="col s12">
+            Cantidad máxima de códigos para repartir: {{oferta.oLimite}}
+        </div>
+
+        <div class="col s12 ads">
+            <a [routerLink]="['/empresa/planes']">ADQUIRIR MÁS</a><br />
+            <span class="recom">Puedes adquirir más ofertas aumentando tu plan actual</span>
+        </div>
+    </div>
+
+    <div class="row">
+        <p class="center">
+            Si estás coforme con los datos de tu oferta, dale "Publicar"
+            <br> Si no, puedes darle "Editar"
+        </p>
+
+        <div class="col s6 center">
+            <a href="javascript:history.back()" class="boton btn-secondary">
+              EDITAR
+            </a>
+        </div>
+
+        <div class="col s6 center">
+            <p class="boton btn-primary" (click)="onPost()">PUBLICAR</p>
+        </div>
+    </div>
+</div>
+<app-navbar></app-navbar>
+<app-loading class="overlay" style="display: none"></app-loading>

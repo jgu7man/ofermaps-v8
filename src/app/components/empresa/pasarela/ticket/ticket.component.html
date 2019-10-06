@@ -1,0 +1,39 @@
+<div class="container" id="ticket">
+    <div class="row" id="plan">
+        <div class="col s12 center">
+            <h3> {{plan.nombre}} </h3>
+            <h4> {{plan.precio}} </h4>
+            <span> {{plan.periodo}} </span>
+        </div>
+        <ul>
+            <li *ngFor="let item of plan.beneficios"> {{item}} </li>
+        </ul>
+    </div>
+
+    <div class="row" id="caducidad">
+        <div class="col s12 center">
+            <p>CADUCIDAD</p>
+            {{today}} <br> {{onemonth}}
+        </div>
+    </div>
+
+    <div class="row" id="formadepago" *ngFor="let dato of tarjeta">
+        <div class="col s2">
+            <img id="emisor" src=" {{dato.tEmisor}} " alt="">
+        </div>
+        <div class="col s10 datosTarjeta">
+            <p class="noMargin"> {{dato.tNombre}} </p>
+            <p class="noMargin"> {{dato.tNumero}} </p>
+        </div>
+    </div>
+</div>
+
+<div class="center">
+    <p>Se enviaran los datos de facturación al email registrado</p>
+</div>
+
+<div class="row">
+    <div class="col s12">
+        <p class="btn-primary boton" [routerLink]="['/empresa/Dashboard']">VOLVER AL PERFIL</p>
+    </div>
+</div>

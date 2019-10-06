@@ -1,0 +1,51 @@
+#tarjeta {
+    max-width: 360px;
+    min-width: 340px;
+    max-height: 200px;
+    background: linear-gradient(15deg, #C1702D, #C1272D);
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 1em;
+    padding: 1em;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, .3);
+    color: white;
+    margin-bottom: 2em;
+}
+
+#emisorImg {
+    width: 150%;
+}
+
+#tarjeta input:not([type]):focus:not([readonly]),
+#tarjeta input[type=text]:not(.browser-default):focus:not([readonly]),
+#tarjeta input[type=password]:not(.browser-default):focus:not([readonly]),
+#tarjeta input[type=email]:not(.browser-default):focus:not([readonly]),
+#tarjeta input[type=url]:not(.browser-default):focus:not([readonly]),
+#tarjeta input[type=time]:not(.browser-default):focus:not([readonly]),
+#tarjeta input[type=date]:not(.browser-default):focus:not([readonly]),
+#tarjeta input[type=datetime]:not(.browser-default):focus:not([readonly]),
+#tarjeta input[type=datetime-local]:not(.browser-default):focus:not([readonly]),
+#tarjeta input[type=tel]:not(.browser-default):focus:not([readonly]),
+#tarjeta input[type=number]:not(.browser-default):focus:not([readonly]),
+#tarjeta input[type=search]:not(.browser-default):focus:not([readonly]),
+textarea.materialize-textarea:focus:not([readonly]) {
+    border-bottom: 1px solid #ffffff !important;
+    box-shadow: none !important;
+}
+
+#tarjeta input:not([type]):focus:not([readonly])+label,
+#tarjeta input[type=text]:not(.browser-default):focus:not([readonly])+label,
+#tarjeta input[type=password]:not(.browser-default):focus:not([readonly])+label,
+#tarjeta input[type=email]:not(.browser-default):focus:not([readonly])+label,
+#tarjeta input[type=url]:not(.browser-default):focus:not([readonly])+label,
+#tarjeta input[type=time]:not(.browser-default):focus:not([readonly])+label,
+#tarjeta input[type=date]:not(.browser-default):focus:not([readonly])+label,
+#tarjeta input[type=datetime]:not(.browser-default):focus:not([readonly])+label,
+#tarjeta input[type=datetime-local]:not(.browser-default):focus:not([readonly])+label,
+#tarjeta input[type=tel]:not(.browser-default):focus:not([readonly])+label,
+#tarjeta input[type=number]:not(.browser-default):focus:not([readonly])+label,
+#tarjeta input[type=search]:not(.browser-default):focus:not([readonly])+label,
+textarea.materialize-textarea:focus:not([readonly])+label {
+    color: #ffffff !important;
+}

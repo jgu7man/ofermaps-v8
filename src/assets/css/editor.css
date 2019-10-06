@@ -1,0 +1,323 @@
+.tituloEditor {
+    font-size: 2em;
+    color: #ccc;
+    text-align: center;
+    margin: 0 0 0.5em 0;
+}
+
+.box {
+    overflow-y: unset;
+    overflow-x: hidden;
+    height: 74vh;
+    padding: 1.5em
+}
+
+.box::-webkit-scrollbar {
+    width: 7.5px;
+}
+
+.box::-webkit-scrollbar-thumb {
+    background: #ff3d31;
+}
+
+.seleccionado {
+    border: dashed 1px #f00;
+    /* box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.4); */
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2);
+}
+
+.seleccionado::before {
+    width: 5px;
+    height: 5px;
+    background: #fff;
+    border-radius: 50%;
+}
+
+.elemento {
+    position: absolute;
+    padding: 5px;
+    left: 46%;
+    top: 46%;
+    width: 80px;
+    height: 80px;
+    touch-action: none;
+    user-select: none;
+    transform: rotate(0deg);
+    z-index: 2;
+}
+
+.crear {
+    position: relative;
+    margin: 1em;
+    color: white;
+    cursor: pointer;
+}
+
+.crear i {
+    font-size: 2em;
+    position: absolute;
+    bottom: 1%;
+    right: -15%;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.cuadro {
+    position: relative;
+    left: 50%;
+    top: 50%;
+    width: 100%;
+    height: 100%;
+    border: none !important;
+    background: #ccc;
+    transform: translate(-50%, -50%);
+}
+
+.cuadroBorde {
+    position: relative;
+    left: 50%;
+    top: 50%;
+    width: 100%;
+    height: 100%;
+    background: none !important;
+    border: solid 2px #ccc;
+    transform: translate(-50%, -50%);
+}
+
+.cuadroRadius {
+    position: relative;
+    left: 50%;
+    top: 50%;
+    width: 100%;
+    height: 100%;
+    border: none !important;
+    border-radius: .5em;
+    background: #ccc;
+    transform: translate(-50%, -50%);
+}
+
+.circulo {
+    position: relative;
+    left: 50%;
+    top: 50%;
+    width: 100%;
+    height: 100%;
+    border: none !important;
+    border-radius: 50%;
+    background: #ccc;
+    transform: translate(-50%, -50%);
+}
+
+.circuloRadius {
+    position: relative;
+    left: 50%;
+    top: 50%;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: none !important;
+    border: solid 2px #ccc;
+    transform: translate(-50%, -50%);
+}
+
+.contador {
+    color: #e3e3e3 !important;
+    border: none !important;
+    position: relative !important;
+    top: -1em !important;
+    height: 15px !important;
+    width: 50px !important;
+    left: 85% !important;
+    background: none
+}
+
+
+/* TEXTO */
+
+.intext {
+    height: 70px;
+    width: 200px;
+    position: absolute;
+    padding: 5px;
+    left: 46%;
+    top: 46%;
+    touch-action: none;
+    user-select: none;
+    transform: rotate(0deg);
+    z-index: 2;
+    cursor: grab;
+}
+
+.intext textarea {
+    overflow: hidden !important;
+}
+
+#listo {
+    color: #ccc;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    font-size: 1.2em;
+    font-weight: 700;
+    margin-left: 2%;
+}
+
+textarea.texto {
+    width: 100% !important;
+    height: 100% !important;
+    resize: none;
+}
+
+textarea[disabled].texto,
+textarea:focus.texto {
+    cursor: grab !important;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+    background: none !important;
+    border: none !important;
+    vertical-align: top !important;
+    min-height: 25px;
+}
+
+textarea.texto.h1,
+textarea[disabled].texto.h1,
+textarea:focus.texto.h1 {
+    font-size: xx-large;
+    width: 100%;
+    height: 100%;
+    color: inherit;
+    border: none;
+}
+
+textarea.texto.h2,
+textarea[disabled].texto.h2,
+textarea:focus.texto.h2 {
+    font-size: x-large;
+    width: 100%;
+    height: 100%;
+    color: inherit;
+    border: none;
+}
+
+textarea.texto.h3,
+textarea[disabled].texto.h3,
+textarea:focus.texto.h3 {
+    font-size: large;
+    width: 100%;
+    height: 100%;
+    color: inherit;
+    border: none;
+}
+
+textarea.texto.legend,
+textarea[disabled].texto.legend,
+textarea:focus.texto.legend {
+    font-style: italic;
+    font-weight: 700;
+    font-family: 'Times New Roman', Times, serif;
+    width: 100%;
+    height: 100%;
+    color: inherit;
+    border: none;
+}
+
+.formatSel {
+    background: #000
+}
+
+.bold {
+    font-weight: 700;
+}
+
+.italic {
+    font-style: italic;
+}
+
+.upper {
+    text-transform: uppercase;
+}
+
+
+/* FONDO */
+
+#imagenFondo {
+    width: auto;
+    height: 100%;
+    position: relative;
+    right: 0%;
+}
+
+
+/* IMAGEN */
+
+.imagenEl {
+    max-height: 100%;
+    position: absolute;
+    padding: 5px;
+    left: 50%;
+    top: 50%;
+    touch-action: none;
+    user-select: none;
+    transform: translate(-50%, -50%) rotate(0deg);
+    z-index: 2;
+}
+
+.imagenEl img {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, 0%);
+}
+
+#subir i,
+#bajar i,
+#copiar i,
+#borrar i {
+    font-size: 1.5em;
+    color: white;
+}
+
+canvas {
+    height: auto !important;
+    max-width: 100%;
+}
+
+#fullscreen {
+    display: none;
+    position: absolute;
+    right: 1.5em;
+    top: 55vh;
+}
+
+@media screen and (max-width: 700px) {
+    .tit {
+        display: none !important;
+    }
+    .box {
+        height: 40vh !important;
+        padding-bottom: 4em;
+    }
+    input[type=range]+.thumb {
+        display: none !important;
+    }
+    #fullscreen i {
+        color: #000;
+        font-size: 1.5em;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        transition: all .3s
+    }
+    .fulled {
+        top: 85vh !important;
+        color: #ff3d31 !important;
+    }
+    .closeHerr {
+        top: 90% !important;
+    }
+    .espacioFull {
+        width: 330px !important;
+        height: 495px !important;
+        top: 42% !important
+    }
+}

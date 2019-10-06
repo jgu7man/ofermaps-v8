@@ -1,0 +1,27 @@
+.resultEmp {
+    background: #f0f0f0;
+    padding: .5em 0em 1em !important;
+    margin: .5em;
+}
+
+.imgPreview.emp {
+    height: 70px;
+    width: 70px;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, 0%);
+}
+
+.imgPreview img {
+    width: 100% !important;
+    top: 0 !important;
+}
+
+.nombre {
+    text-transform: uppercase;
+    font-weight: 800
+}

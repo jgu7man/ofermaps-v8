@@ -1,0 +1,24 @@
+.menu {
+    background: black;
+    min-width: 107%;
+    left: 50%;
+    position: relative;
+    transform: translatex(-50%);
+}
+
+.col.s12.valign-wrapper {
+    display: flex;
+    flex-flow: row wrap;
+    margin: auto;
+}
+
+.icon {
+    font-size: 2em;
+    color: #fff;
+    margin: auto;
+    cursor: pointer;
+}
+
+.active {
+    color: #ff3d31 !important;
+}

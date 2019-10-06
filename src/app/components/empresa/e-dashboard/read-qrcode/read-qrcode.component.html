@@ -1,0 +1,23 @@
+<app-backbar></app-backbar>
+<div class="contenido">
+    <div class="row">
+        <div class="col s12">
+            <h5 class="center">Escanea el código de un cliente</h5>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12" id="scanner">
+            <zxing-scanner #scanner [(enable)]="enabled" [(torch)]="flash" [(device)]="currentDevice" (camerasFound)="onChangeCamera($event)" (scanSuccess)="onCodeResult($event)" [formats]="formatsEnabled" [tryHarder]="tryHarder" (permissionResponse)="onHasPermission($event)"></zxing-scanner>
+            <div class="scanAnimate"></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12">
+            <ul class="btnArea">
+                <li class="btnCamera"><i class="fas fa-stop-circle" (click)="onPause()"></i></li>
+                <li class="btnCamera"><i class="fas fa-lightbulb" (click)="onFlash()"></i></li>
+                <li class="btnCamera"><i class="fas fa-retweet" (click)="onChangeCamera($event)"></i></li>
+            </ul>
+        </div>
+    </div>
+</div>

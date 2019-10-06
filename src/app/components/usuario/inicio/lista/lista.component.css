@@ -1,0 +1,24 @@
+#listaView {
+    background: #fff;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    padding: 6em 0 3em 0;
+}
+
+#ofertasRow {
+    position: relative;
+    /* top: 6em; */
+    /* padding-bottom: 3em; */
+    overflow: auto;
+    height: 70vh;
+}
+
+.oferta {
+    cursor: pointer;
+}
+
+.oferta img {
+    width: 100%;
+}

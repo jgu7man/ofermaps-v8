@@ -1,0 +1,17 @@
+.eNavbar {
+    position: fixed;
+    top: -1em;
+    height: 10vh;
+    z-index: 12;
+    background: #fff;
+    width: 100vw !important;
+}
+
+.navbarTitle {
+    font-weight: 600;
+}
+
+.unlogIcon {
+    font-size: x-large;
+    padding: 1em 0 !important;
+}

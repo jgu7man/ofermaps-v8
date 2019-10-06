@@ -1,0 +1,22 @@
+<div class="row" id="navBar">
+    <div class="col s2 icon center">
+        <i class="fas fa-user-alt" [routerLink]="['/usuario']"></i>
+    </div>
+    <div class="col s2 icon center" *ngIf="admin">
+        <i class="fas fa-building" [routerLink]="['/empresa/Dashboard']" routerLinkActive="router-link-active"></i>
+    </div>
+    <div id="navIcon" class="col s2">
+        <img src="../../../../assets/img/oficons/up.png" alt="" (click)="menu = true" (click)="abrirMenu()" />
+    </div>
+
+    <div class="col s2 icon center">
+        <i class="fas fa-map-marked-alt" [routerLink]="['/inicio']"></i>
+    </div>
+    <div class="col s2 icon center" *ngIf="admin">
+        <i class="fas fa-wallet" [routerLink]="['/empresa/cuenta']" routerLinkActive="router-link-active"></i>
+    </div>
+    <div class="col s12">
+        <div class="col s12 navbarContent">
+            <app-suscripciones *ngIf="suscripciones"></app-suscripciones>
+            <app-search *ngIf="busqueda"></app-search>
+        </div>

@@ -1,0 +1,4 @@
+app-top-area {
+    position: absolute;
+    z-index: 2;
+}

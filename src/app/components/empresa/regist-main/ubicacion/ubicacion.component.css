@@ -1,0 +1,31 @@
+.ubicacion {
+    padding-bottom: 5em
+}
+
+.tomaps {
+    height: 100px;
+    padding: 1em;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
+    border-radius: 1em;
+    transition: all 0.3s;
+    margin: 0;
+}
+
+.tomaps:hover {
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.6);
+}
+
+.tomaps:active {
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.tomaps img {
+    height: 100% !important;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}

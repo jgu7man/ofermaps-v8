@@ -1,0 +1,8 @@
+<div id="listaView">
+    <h5 class="center">Ofertas en {{ ciudad }}</h5>
+    <div class="row" id="ofertasRow">
+        <div class="col s6 m4 l3 oferta" *ngFor="let oferta of ofertas" [routerLink]="['/oferta', oferta.oferId]" routerLinkActive="router-link-active">
+            <img [src]="oferta.oferImg" alt="" />
+        </div>
+    </div>
+</div>

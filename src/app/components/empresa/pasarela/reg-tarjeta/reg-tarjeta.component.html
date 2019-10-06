@@ -1,0 +1,137 @@
+<app-e-navbar></app-e-navbar>
+
+<div class="container contenido" id="regtarjeta">
+
+    <div class="row">
+        <div class="col s12">
+            <h4 class="center">REGISTRAR TARJETA</h4>
+        </div>
+    </div>
+
+    <form class="oferForm" name="tarjetaForm" id="tarjetaForm" method="POST" #tarjetaForm="ngForm" onsubmit=return false (ngSubmit)="onSubmit()" action="#">
+        <div class="container" id="tarjeta">
+
+            <div class="row noMargin">
+                <div class="input-field col s12">
+                    <input type="text" name="tBanco" id="tBanco" #tBanco="ngModel" [(ngModel)]="tarjeta.tBanco" required>
+                    <label for="tBanco">Banco</label>
+                    <div class="error" *ngIf="tBanco.invalid && (tBanco.dirty || tBanco.touched)">
+                        <span class="alertForm" *ngIf="tBanco.errors['required']">
+                        Escribe nombre del banco
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row noMargin">
+                <div class="input-field noMargin col s12">
+                    <input type="text" name="tNumero" id="tNumero" #tNumero="ngModel" [(ngModel)]="tarjeta.tNumero" required [textMask]="{mask: card}">
+                    <label for="tNumero">Número de tarjeta</label>
+                    <div class="error" *ngIf="tNumero.invalid && (tNumero.dirty || tNumero.touched)">
+                        <span class="alertForm" *ngIf="tNumero.errors['required']">
+                            Escribe número de tarjeta
+                            </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row noMargin">
+                <div class="input-field noMargin col s3">
+                    <input type="text" name="tMes" id="tMes" #tMes="ngModel" [(ngModel)]="tarjeta.tMes" required>
+                    <label for="tMes">Mes</label>
+                </div>
+
+                <div class="input-field noMargin col s3">
+                    <input type="text" name="tYear" id="tYear" #tYear="ngModel" [(ngModel)]="tarjeta.tYear" required>
+                    <label for="tYear">Año</label>
+                </div>
+                <div class="input-field noMargin col s3">
+                    <input type="text" name="tCVC" id="tCVC" #tCVC="ngModel" [(ngModel)]="tarjeta.tCVC" required>
+                    <label for="tCVC">CVC</label>
+                </div>
+                <div class="input-field noMargin col s2">
+                    <img id="emisorImg" src="">
+                    <input type="hidden" name="tEmisor" id="tEmisro" #tEmisor="ngModel" [(ngModel)]="tarjeta.tEmisor">
+                </div>
+
+
+                <!-- errores -->
+                <div class="error" *ngIf="tMes.invalid && (tMes.dirty || tMes.touched)">
+                    <span class="alertForm" *ngIf="tMes.errors['required']">
+                    Escribe el mes
+                    </span>
+                </div>
+                <div class="error" *ngIf="tYear.invalid && (tYear.dirty || tYear.touched)">
+                    <span class="alertForm" *ngIf="tYear.errors['required']">
+                    Escribe el año
+                    </span>
+                </div>
+                <div class="error" *ngIf="tCVC.invalid && (tCVC.dirty || tCVC.touched)">
+                    <span class="alertForm" *ngIf="tCVC.errors['required']">
+                    Escribe los 3 dígitos de atrás
+                    </span>
+                </div>
+            </div>
+
+        </div>
+
+
+
+        <!-- TERMINA TARJETA -->
+
+        <div class="row">
+            <div class="input-field col s12">
+                <input type="text" name="tNombre" id="tNombre" #tNombre="ngModel" [(ngModel)]="tarjeta.tNombre" required>
+                <label for="tNombre">Nombre del propietario</label>
+                <div class="error" *ngIf="tNombre.invalid && (tNombre.dirty || tNombre.touched)">
+                    <span class="alertForm" *ngIf="tNombre.errors['required']">
+                    Nombre del propietario
+                    </span>
+                </div>
+            </div>
+
+            <div class="col s2 emisor">
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col s12 input-field">
+                <input type="text" name="facEmail" id="facEmail" #facEmail="ngModel" [(ngModel)]="tarjeta.facEmail" required>
+                <label for="facEmail">Email de facturación</label>
+                <div class="error" *ngIf="facEmail.invalid && (facEmail.dirty || facEmail.touched)">
+                    <span class="alertForm" *ngIf="facEmail.errors['required']">
+                    Escribe un email
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col s12 input-field">
+                <input type="text" name="facTel" id="facTel" #facTel="ngModel" [(ngModel)]="tarjeta.facTel" required>
+                <label for="facTel">Teléfono</label>
+                <div class="error" *ngIf="facTel.invalid && (facTel.dirty || facTel.touched)">
+                    <span class="alertForm" *ngIf="facTel.errors['required']">
+                        El teléfono es necesario
+                        </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s12">
+                <input type="text" name="facRFC" id="facRFC" #facRFC="ngModel" [(ngModel)]="tarjeta.facRFC" required>
+                <label for="facRFC">R.F.C.</label>
+                <div class="error" *ngIf="facRFC.invalid && (facRFC.dirty || facRFC.touched)">
+                    <span class="alertForm" *ngIf="facRFC.errors['required']">
+                        El R.F.C. es necesario
+                        </span>
+                </div>
+            </div>
+        </div>
+
+        <input type="submit" value="GUARDAR" id="guardar" [disabled]="!tarjetaForm.form.valid" class="boton btn-primary">
+    </form>
+
+</div>

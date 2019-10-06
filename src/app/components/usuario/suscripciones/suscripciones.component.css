@@ -1,0 +1,36 @@
+#ofertasRecientes {
+    overflow: auto;
+    height: 75vh;
+}
+
+.querySuscrip {
+    position: relative;
+    top: 1em;
+    border-bottom: #ccc 1px solid;
+    min-width: 100vw;
+}
+
+.corousel {
+    display: flex;
+    padding: 0em 1em 1em;
+    overflow: auto
+}
+
+.avatarImg {
+    height: 40px;
+    width: 40px;
+    overflow: hidden;
+    border-radius: 50%;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, .3);
+    margin: 0em .5em;
+}
+
+.avatarImg img {
+    top: 0% !important;
+    background: #fff;
+}
+
+.imgPreview img {
+    width: 90% !important;
+    top: 50% !important;
+}

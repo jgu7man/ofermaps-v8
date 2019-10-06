@@ -1,0 +1,62 @@
+<h5>Resultados relacionados con: {{matchWord}}</h5>
+
+<div class="row resultSec" *ngIf="byProd">
+    <h5>Productos</h5>
+    <div class="col s6" *ngFor="let ofer of byProd" [routerLink]="['/oferta', ofer.idOferta]">
+        <div class="imgPreview ofer">
+            <img [src]="ofer.oImagen" alt="">
+        </div>
+        <p class="center"> {{ofer.oNombre}} </p>
+    </div>
+</div>
+
+<div class="row resultSec" *ngIf="byEmp">
+    <h5>Empresas</h5>
+    <div class="col s12 resultEmp" *ngFor="let emp of byEmp" [routerLink]="['/empresa/vista', emp.idEmpresa]">
+        <div class="row">
+            <div class="col s4">
+                <div class="imgPreview emp">
+                    <img [src]="emp.nAvatar" alt="">
+                </div>
+            </div>
+            <div class="col s8">
+                <p class="nombre"> {{emp.nNegocio}} </p>
+                <span>{{emp.nCategoria}}</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row resultSec" *ngIf="byCat">
+    <h5>Por categoria</h5>
+    <div class="col s12 resultEmp" *ngFor="let emp of byCat">
+        <div class="row">
+            <div class="col s4">
+                <div class="imgPreview emp">
+                    <img [src]="emp.nAvatar" alt="">
+                </div>
+            </div>
+            <div class="col s8">
+                <p class="nombre"> {{emp.nNegocio}} </p>
+                <span>{{emp.nCategoria}}</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row resultSec" *ngIf="byCity">
+    <h5>Ofertas en la ciudad</h5>
+    <div class="col s6" *ngFor="let ofer of byCity" [routerLink]="['/oferta', ofer.idOferta]">
+        <div class="imgPreview ofer">
+            <img [src]="ofer.oImagen" alt="">
+        </div>
+        <p class="center"> {{ofer.oNombre}} </p>
+    </div>
+</div>
+
+<div class="row center" *ngIf="!byProd && !byEmp && !byCat && !byCity">
+    <div class="col s12">
+        <i class="fas fa-sad-tear" style="font-size: 48px;"></i>
+        <p>No se encontraron resultados</p>
+    </div>
+</div>

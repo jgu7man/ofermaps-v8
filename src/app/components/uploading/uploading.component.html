@@ -1,0 +1,13 @@
+<!-- <div id="circleBox"> -->
+<!-- <input type="file" name="file" id="file" (change)="setImage($event)">
+    <input type="submit" value="Subir" (click)="submit()"> -->
+<div id="uploading">
+    <round-progress [current]="textValue" [max]="100" [color]="'url(#ofermaps_gradient)'" [background]="'#ccc'" [radius]="125" [stroke]="40" [semicircle]="false" [rounded]="false" [clockwise]="true" [responsive]="false" [animation]="'easeInOutQuart'" [animationDelay]="0"></round-progress>
+</div>
+<svg>
+  <linearGradient id="ofermaps_gradient" x1="0" x2="0" y1="0" y2="1" gradientTransform="rotate(15)">
+    <stop offset="5%"  stop-color="#C1272D"/>
+    <stop offset="95%" stop-color="#C1702D"/>
+  </linearGradient>
+</svg>
+<!-- </div> -->

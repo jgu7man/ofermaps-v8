@@ -1,0 +1,83 @@
+#textArea {
+    width: 88vw;
+}
+
+#textArea .col {
+    margin-left: 1em
+}
+
+#perfil {
+    width: 70px;
+    height: 70px;
+    position: fixed;
+    z-index: 3;
+    border-radius: 50%;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    top: 1em;
+}
+
+#perfil img {
+    position: relative;
+    top: -50%;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    width: 100%;
+    background: #fff;
+}
+
+#searchBar {
+    position: fixed;
+    width: 70%;
+    top: 2em;
+    left: 4.5em;
+}
+
+#searchBar input {
+    width: 80%;
+    background: #fff;
+    position: relative;
+    border-radius: 2em;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    border: none;
+    padding: 0px 5px 0 10%;
+}
+
+#searchBar button {
+    background: none;
+    border: none;
+    position: relative;
+    top: -3em;
+    left: 45%;
+    transform: translateX(-100%);
+    color: #ccc;
+}
+
+#viewMode {
+    display: inline-block;
+    width: 2em;
+    position: fixed;
+    right: .25em;
+    background: white;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    top: 1.5em;
+    font-size: 1.5em;
+    color: #c13e2d;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+@media screen and (min-width: 500px) {
+    #searchBar {
+        width: 30%;
+    }
+    #searchBar button {
+        position: absolute;
+        top: 1em;
+        left: 93%;
+    }
+    #viewMode {
+        right: 2em;
+        font-size: 1.75em
+    }
+}

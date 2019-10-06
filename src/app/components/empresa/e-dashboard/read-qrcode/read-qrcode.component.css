@@ -1,0 +1,52 @@
+:host zxing-scanner::ng-deep video {
+    width: 300px;
+    -o-object-fit: contain;
+    object-fit: contain;
+    height: 300px;
+    position: relative;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, 0%);
+    border-radius: 1em;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    border: 1px solid red;
+}
+
+.scanAnimate {
+    border-bottom: 2px solid red;
+    position: relative;
+    top: -21em;
+    width: 300px;
+    height: 2px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: scaning 2s ease-in-out infinite;
+}
+
+@keyframes scaning {
+    0% {
+        top: -295px;
+    }
+    50% {
+        top: -15px;
+    }
+    100% {
+        top: -295px;
+    }
+}
+
+.btnArea {
+    display: flex;
+    flex-flow: wrap row;
+}
+
+.btnCamera {
+    width: 27%;
+    text-align: center;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    margin: 0 .5em;
+    align-items: center;
+    padding: .5em 0;
+    font-size: 1.5em;
+    color: #c1272d;
+}

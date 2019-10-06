@@ -1,0 +1,79 @@
+<div class="container contenido" *ngIf="result">
+    <span [ngSwitch]="status">
+        <div *ngSwitchCase="'exito'">
+          <div class="row">
+            <div class="col s12 center">
+                <h5>Código válido para: <br> {{usuario.displayName}} </h5>
+                <span> {{usuario.email}} </span>
+</div>
+</div>
+<div class="row">
+    <div class="col 12 center">
+        <h5 [ngSwitch]="oferta.oTipo">
+            Válido para:
+            <span *ngSwitchCase="'Descuento'">
+                                {{oferta.oCantidad}}% de descuento en {{oferta.oProdserv}}
+                            </span>
+            <span *ngSwitchCase="'Bono'">
+                                un bono de {{oferta.oCantidad}} en {{oferta.oProdserv}}
+                            </span>
+            <span *ngSwitchCase="'Bono'">
+                                {{oferta.oProdserv}} Gratis
+                                </span>
+            <span *ngSwitchCase="'Equivalencia'">
+                                {{oferta.oCantidad}}<i class="fas fa-times"></i>{{oferta.oCantAux}} en {{oferta.oProdserv}}
+                            </span>
+        </h5>
+    </div>
+</div>
+<div class="row">
+    <div class="col s12 m6">
+        <button class="boton btn-primary" [routerLink]="['/empresa/e-dashboard']">
+                            Perfil de empresa
+                        </button>
+    </div>
+    <div class="col s12 m6">
+        <button class="boton btn-secondary" [routerLink]="['/empresa/reader']">
+                            Escanear nuevo
+                        </button>
+    </div>
+</div>
+</div>
+<div *ngSwitchCase="'equivocada'">
+    <div class="row">
+        <div class="col s12 center">
+            <h4>Esta empresa no puede escanear este código</h4>
+            <h5>Inicia sesión con la empresa correcta</h5>
+        </div>
+    </div>
+</div>
+<div *ngSwitchCase="'canjeado'">
+    <div class="row">
+        <div class="col s12 center">
+            <h4>El usuario ya canjeado el código</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12 m6">
+            <button class="boton btn-primary" [routerLink]="['/empresa/e-dashboard']">
+                        Perfil de empresa
+                    </button>
+        </div>
+        <div class="col s12 m6">
+            <button class="boton btn-secondary" [routerLink]="['/empresa/reader']">
+                        Escanear de nuevo
+                    </button>
+        </div>
+    </div>
+</div>
+<div *ngSwitchDefault>
+    <div class="row">
+        <div class="col s12 center">
+            <h4>Error con la conexión</h4>
+        </div>
+    </div>
+</div>
+</span>
+</div>
+
+<app-loading class="overlay"></app-loading>

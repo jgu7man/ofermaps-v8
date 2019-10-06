@@ -1,0 +1,48 @@
+<div class="login">
+    <div class="row">
+        <div class="col s12 center">
+            <img src="../../../assets/img/LogoJ.svg" alt="Logo" id="logoPrincipal">
+        </div>
+    </div>
+    <h4 class="loginTitle center">EMPRESAS</h4>
+    <form class="oferForm" name="login" #login="ngForm" (ngSubmit)="onSubmit()" action="#" method="POST" id="loginform" onsubmit="return false">
+        <p class="label">Iniciar sesión</p>
+        <div class="row">
+            <div class="input-field col s12">
+                <input email type="email" placeholder="Email" name="usuario" class="ofinput" id="usuario" required #email="ngModel" [(ngModel)]="loginEmpresa.email">
+                <div *ngIf="email.invalid && (email.dirty || email.touched)">
+                    <span class="alertForm" *ngIf="email.errors['required']">
+                        El correo es necesario
+                    </span>
+                    <span class="alertForm" *ngIf="email.errors['email']">
+                        Ingresa un correo válido
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s12">
+                <input type="password" placeholder="Contraseña" name="contrasena" class="ofinput" id="contrasena" required #contra="ngModel" [(ngModel)]="loginEmpresa.contra" PwdToggle>
+                <span class="alertForm" *ngIf="contra.invalid && (contra.dirty || contra.touched)">
+                    Ingresa una contraseña
+                </span>
+            </div>
+
+        </div>
+
+        <div class="row noMargin loginExtras">
+            <div class="col s12">
+                <span id="contra-olvidada">Olvidé mi contraseña</span>
+            </div>
+
+            <p class="col s12">
+                <input type="checkbox" name="recordarme" id="recordarme" value=false class="ofcheck">
+                <label for="recordarme">Recordarme</label>
+            </p>
+        </div>
+
+        <input type="submit" name="submit" id="ingresar" class="boton btn-primary" [disabled]="!login.form.valid">
+    </form>
+    <p class="boton btn-secondary" [routerLink]="['/registmain/registro']" routerLinkActive="router-link-active">REGISTRASE</p>
+</div>

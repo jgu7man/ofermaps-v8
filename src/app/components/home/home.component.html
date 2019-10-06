@@ -1,0 +1,51 @@
+<div class=" home" [ngStyle]="{'background-image': 'url('+zone+')'}">
+    <div class="row">
+        <div class="col s12 center">
+            <img src="../../../assets/img/LogoJ.svg" alt="Logo" id="logoPrincipal" />
+        </div>
+    </div>
+    <div class="container ">
+        <div class="row">
+            <div class="col s6 slider" *ngIf="slider">
+                <div class="row sliders">
+                    <div class="col s12 slide" id="slide1">
+                        <app-slider1></app-slider1>
+                    </div>
+                    <div class="col s12 slide">
+                        <app-slider2></app-slider2>
+                    </div>
+                    <div class="col s12 slide">
+                        <app-slider3></app-slider3>
+                    </div>
+                </div>
+                <div class="menu-buckets row">
+                    <div (click)="buckuno()" id="buck1" class="buck buck-active"></div>
+                    <div (click)="buckdos()" id="buck2" class="buck"></div>
+                    <div (click)="bucktres()" id="buck3" class="buck"></div>
+                </div>
+            </div>
+            <div class="col s6" id="botones">
+                <div class="row">
+                    <p class="label">Inicia sesión</p>
+                    <div class="col s12" (click)="auth.facebookSingIn()">
+                        <p class="boton btn-fb ">Facebook</p>
+                    </div>
+
+                    <div class="col s12 center" (click)="auth.googleSingIn()">
+                        <p class="boton btn-go">Google</p>
+                    </div>
+                </div>
+
+                <!-- <div class="row indep">
+                    <p class="label">Publica ofertas</p>
+                    <div class="col s12">
+                        <p class="boton btn-emp" [routerLink]="['/empresa']">Empresas</p>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-loading class="overlay" style="display: none"></app-loading>
+<app-aviso class="overlay"></app-aviso>

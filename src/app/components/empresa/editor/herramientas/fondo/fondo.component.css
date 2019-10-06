@@ -1,0 +1,25 @@
+color-swatches {
+    position: relative;
+    left: -7.5%
+}
+
+color-swatches::-webkit-scrollbar {
+    width: 7.5px;
+}
+
+color-swatches::-webkit-scrollbar-track {
+    background: none;
+}
+
+color-swatches::-webkit-scrollbar-thumb {
+    background: #ccc;
+}
+
+.ajustes .boton {
+    padding: 5px 15px;
+    left: 0% !important;
+}
+
+#cajaImagen .boton {
+    left: 45% !important
+}

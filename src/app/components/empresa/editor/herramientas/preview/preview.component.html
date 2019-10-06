@@ -1,0 +1,54 @@
+<div class="overlay">
+    <div class="close" (click)="close()">
+        <i class="fas fa-times"></i>
+    </div>
+
+    <div class="row">
+        <div class="col s8 center" id="popPreview">
+            <div class="row">
+                <div class="col s6" id="preCanvas">
+                    <div *ngIf='canvas == "" '>Cargando...</div>
+                </div>
+                <div class="col s6" id="save">
+                    <h4 class="center">GUARDAR</h4>
+                    <div class="row descargarBtns">
+                        <div class="col s12">
+                            <a href="">
+                                <button class="boton btn-primary">
+                                Usar
+                                </button>
+                            </a>
+                        </div>
+                        <div class="col s12">
+                            <a id="download" download="oferta.png">
+                                <button class="boton btn-secondary" (click)="descargar()">
+                                Descargar
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12" id="share">
+                            <p class="center">COMPARTIR</p><br>
+                            <a href="https://www.facebook.com/sharer/sharer.php?uexample.php" target="_blank">
+                                <i class="fa fa-facebook-square    "></i>
+                            </a>
+                            <a href="">
+                                <i class="fa fa-instagram"></i>
+                            </a>
+                            <a href="">
+                                <i class="fab fa-whatsapp-square"></i>
+                            </a>
+                            <a href="">
+                                <i class="fa fa-pinterest-square"></i>
+                            </a>
+                            <a href="">
+                                <i class="fa fa-twitter-square"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

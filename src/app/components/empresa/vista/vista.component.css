@@ -1,0 +1,60 @@
+.content {
+    position: relative;
+    top: -2em;
+    padding-bottom: 3em;
+}
+
+#datosEmpresa {
+    padding-top: 4em;
+}
+
+#fotoPerfil {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-bottom: 1em;
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    border-radius: 50%;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    z-index: 5;
+    top: 1.5em
+}
+
+#fotoPerfil img {
+    position: relative;
+    height: 100%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+}
+
+.nombre {
+    font-size: 1.5em;
+    font-weight: 700;
+}
+
+.oferta {
+    cursor: pointer;
+}
+
+.oferta img {
+    width: 100%;
+    max-height: 200%;
+    position: relative;
+    top: 0%;
+    left: 50%;
+    transform: translate(-50%, 0%);
+}
+
+h5 {
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+agm-map {
+    height: 200px;
+    width: 100%;
+}

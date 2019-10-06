@@ -1,0 +1,11 @@
+<div class="fixed-action-btn click-to-toggle">
+    <a class="btn-floating menu-btn btn-large" title="Menú">
+        <i class="fas fa-bars"></i>
+    </a>
+    <ul>
+        <li><a class="btn-floating" title="Nueva oferta" [routerLink]="['/empresa/crear-oferta', idEmpresa]"><i class="fas fa-file-medical"></i></a></li>
+        <li><a class="btn-floating" title="Editar perfil" [routerLink]="['/empresa/editar', idEmpresa]"><i class="fas fa-edit    "></i></a></li>
+        <li><a class="btn-floating" title="Ver Ubicación" [routerLink]="['/empresa/verubicacion', idEmpresa]"><i class="fas fa-map-marked-alt" title="Ver ubicación"></i></a></li>
+        <li><a class="btn-floating" title="Escanear código" [routerLink]="['/empresa/reader']"><i class="fas fa-qrcode" title="Escanear código"></i></a></li>
+    </ul>
+</div>

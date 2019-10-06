@@ -1,0 +1,15 @@
+#profilePreview {
+    width: 26vw;
+    height: 25vw;
+    overflow: hidden;
+    border-radius: 50%;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
+}
+
+#avatarPreview {
+    max-width: 200%;
+    position: relative;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}

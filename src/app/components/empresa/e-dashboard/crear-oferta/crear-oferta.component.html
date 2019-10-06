@@ -1,0 +1,208 @@
+<div id="create">
+    <a href="javascript:history.back()" class="icon-back">
+        <img src="../../../../assets/img/oficons/back.png" alt="back">
+    </a>
+    <div class="container white layer ">
+        <div class="title">
+            <h4 class="center">CREAR NUEVA OFERTA</h4>
+            <p>Crea una nueva oferta para que tus clientes visiten tu negocio</p>
+        </div>
+
+        <form name="personalizar" #personalizar="ngForm" (ngSubmit)="onSubmit()" action="#" method="POST" id="personalizar" onsubmit="return false">
+            <!-- NOMBRE DE LA OFERTA -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <input type="text" placeholder="Nombre de la oferta" name="oNombre" class="ofinput" id="oNombre" required #oNombre="ngModel" [(ngModel)]="oferta.oNombre" />
+                    <div *ngIf="oNombre.invalid && (oNombre.dirty || oNombre.touched)">
+                        <span class="red" *ngIf="oNombre.errors['required']">
+                        El nombre de la oferta es necesario
+                    </span>
+                    </div>
+                </div>
+            </div>
+
+
+            <br>
+            <!-- TIPO DE LA OFERTA -->
+            <div class="row ">
+                <div class=" col s12" (click)="drop = !drop">
+                    <span class="drop-icon" *ngIf="drop; else dropup" (click)="open = 'list-drop-open'">
+                    <img src="../../../../../assets/img/oficons/dropdown.png" width="15px" alt=""/>
+                </span>
+                    <ng-template #dropup>
+                        <span class="drop-icon" (click)="open = 'list-drop-close'">
+                            <img src="../../../../../assets/img/oficons/dropup.png" width="15px" alt="" />
+                        </span>
+                    </ng-template>
+
+                    <input class="input-drop" type="hidden" name="oTipo" #nCateogria="ngModel" [(ngModel)]="oferta.oTipo" id="oTipo" value="{{ tipo }}" touched />
+                    <ul id="drop-list" class="list-drop-close ofinput" [ngClass]="open" style="width: 112% !important">
+                        <li class="item-drop disable" (click)="open = 'list-drop-open'" id="tipoOferta">
+                            Tipo de oferta
+                        </li>
+                        <li *ngFor="let item of tiposOferta" class="item-drop" (click)="open = 'list-drop-close'" (click)="toggle(item.value)">
+                            {{item.display}}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <br>
+            <!-- TIPOS DE OFETA -->
+
+            <div class="row types" [ngSwitch]="tipo">
+                <!-- DESCUENTO -->
+                <div class="input-field col s4" *ngSwitchCase="'descuento'">
+                    <input type="number" placeholder="Cantidad" name="oCantidad" class="ofinput cantDcto" id="oCantidad" required #oCantidad="ngModel" [(ngModel)]="oferta.oCantidad" />
+                    <span class="iconDcto"> <i class="fas fa-percent"></i> </span>
+                    <div *ngIf="oCantidad.invalid && (oCantidad.dirty || oCantidad.touched)">
+                        <span class="red" *ngIf="oCantidad.errors['required']">
+                            Es necesario definir una cantidad
+                        </span>
+                    </div>
+                </div>
+
+                <!-- BONO -->
+                <div class="input-field col s4" *ngSwitchCase="'bono'">
+                    <span class="iconBono"> <i class="fas fa-dollar-sign"></i> </span>
+                    <input type="number" placeholder="Cantidad" name="oCantidad" class="ofinput cantBono" id="oCantidad" required #oCantidad="ngModel" [(ngModel)]="oferta.oCantidad" />
+                    <div *ngIf="oCantidad.invalid && (oCantidad.dirty || oCantidad.touched)">
+                        <span class="red" *ngIf="oCantidad.errors['required']">
+                            Es necesario definir una cantidad
+                        </span>
+                    </div>
+                </div>
+
+                <!-- GRATIS -->
+                <div class="input-field col s4" *ngSwitchCase="'gratis'">
+                    <p>GRATIS</p>
+                </div>
+
+                <!-- EQUIVALENCIA -->
+                <div class="input-field col s4" *ngSwitchCase="'equivalencia'">
+                    <input type="number" placeholder="" name="oCantidad" class="ofinput" id="oCantidad" required #oCantidad="ngModel" [(ngModel)]="oferta.oCantidad" />
+                    <span> <i class="fa fa-times" aria-hidden="true"></i></span>
+                    <input type="number" placeholder="" name="oCantAux" class="ofinput" id="oCantAux" required #oCantAux="ngModel" [(ngModel)]="oferta.oCantAux" />
+                    <div *ngIf="oCantAux.invalid && (oCantAux.dirty || oCantAux.touched)">
+                        <span class="red" *ngIf="oCantAux.errors['required']">
+                            Es necesario definir una cantidad
+                        </span>
+                    </div>
+                </div>
+
+                <!-- PRODUCTO O SERVICIO -->
+                <div class="input-field col s8 producto">
+                    <input type="text" placeholder="Producto / Servicio" name="oProdserv" class="ofinput" id="oProdserv" required #oProdserv="ngModel" [(ngModel)]="oferta.oProdserv" />
+                    <div *ngIf="oProdserv.invalid && (oProdserv.dirty || oProdserv.touched)">
+                        <span class="red" *ngIf="oProdserv.errors['required']">
+                            Define que producto o servicio aplica a la oferta
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <br>
+            <!-- CADUCIDAD DE LA OFERTA -->
+            <div class="row">
+                <!-- <input type="text" name="oCaducidad" class="datepicker" [(ngModel)]="oCaducidad" (change)="getDate($event)"> -->
+                <div class="input-field col s12">
+                    <input type="date" id="cad" name="oCaducidad" placeholder="Caducidad de la oferta" class="ofinput" required #oCaducidad [value]="oferta.oCaducidad | date: 'yyyy-MM-dd'" (ngModelChange)="oferta.oCaducidad = $event" (input)="oferta.oCaducidad = parseDate($event.target.value)"
+                    />
+                    <div *ngIf="oCaducidad.invalid && (oCaducidad.dirty || oCaducidad.touched)">
+                        <span class="red" *ngIf="oCaducidad.errors['required']">
+                      Define una fecha de caducidad
+                    </span>
+                    </div>
+                    <div id="datecont"></div>
+                </div>
+            </div>
+            <br>
+
+            <!-- CONDICIONES DE OFERTAS -->
+            <div class="row">
+                <label for="oCondiciones">Define las condiciones de la oferta. </label>
+                <div class="col s8">
+                    <input type="text" class="ofinput" placeholder="Agrega condiciones" name="condicion" [(ngModel)]="condicion" (keyup.enter)="agregarCondicion()">
+                </div>
+                <div class="col s4">
+                    <p class="boton btn-secondary add" (click)="agregarCondicion()">
+                        <i class="fas fa-plus"></i>
+                    </p>
+                </div>
+                <ul class="col s12 conds-input" data-name="conds-input">
+                    <li class="cond" *ngFor="let item of oferta.oCondiciones, index as i">
+                        {{item}}
+                        <span class="del" (click)="borrarCondicion(i)"></span>
+                    </li>
+                </ul>
+            </div>
+
+            <br>
+
+            <!-- KEYWORDS -->
+
+            <div class="row">
+                <input type="hidden" name="keywords[]" class="ofinput" id="keywords" required #keywords="ngModel" [(ngModel)]="oferta.keywords" *ngFor="let keyword of oferta.keywords; let i = index" />
+                <label for="keywords">Escribe palabras claves que ayudarán a tus clientes a encontrarte más fácilmente. <b>Entre más palabras claves agregues, mejor</b> </label>
+                <div class="col s8">
+                    <input type="text" class="ofinput" placeholder="Agrega palabras clave" name="condicion" [(ngModel)]="keyword" (keyup.enter)="agregarKeyword()">
+                </div>
+                <div class="col s4">
+                    <p class="boton btn-secondary add" (click)="agregarKeyword()">
+                        <i class="fas fa-plus"></i>
+                    </p>
+                </div>
+                <ul class="col s12 conds-input" data-name="conds-input">
+                    <li class="cond" *ngFor="let item of oferta.keywords, index as i">
+                        {{item}}
+                        <span class="del" (click)="borrarKeyword(i)"></span>
+                    </li>
+                </ul>
+            </div>
+
+            <br>
+
+            <!-- LIMITE DE OFERTAS -->
+            <div class="row">
+                <div class="input-field col s6">
+                    <input type="number" name="oLimite" [max]="maxCodes" class="ofinput" id="oLimite" placeholder="oferta.oLimite" required #oLimite="ngModel" [(ngModel)]="oferta.oLimite" />
+                    <label for="oLimte">Limite de OFERTAS</label>
+                    <div *ngIf="oLimite.invalid && (oLimite.dirty || oLimite.touched)">
+                        <span class="red" *ngIf="oLimite.errors['required']">
+                        Define cuantas ofertas límite deseas usar
+                    </span>
+                    </div>
+                </div>
+                <div class="col s6">
+                    <p>/{{maxCodes}} disponibles</p>
+                </div>
+                <div class="col s12 ads">
+                    <a [routerLink]="['/empresa/planes']">ADQUIRIR MÁS</a><br />
+                    <span class="recom">Puedes adquirir más ofertas aumentando tu plan actual</span>
+                </div>
+            </div>
+
+
+            <br><br>
+            <!-- IMAGEN DE OFERTA -->
+            <div class="row">
+                <h5 class="center">Imagen de oferta</h5>
+                <div class="col s6">
+                    <p class="boton btn-secondary" (click)="ofertaPendiente()" style="width: 10em; float: left;">Diseñar</p>
+                </div>
+                <div class="col s6 file-field input-field">
+                    <div class="">
+                        <span class="boton btn-secondary upfile" style="float: right; left: 75% !important"> Cargar</span>
+                        <input type="file" name="oImagen" id="oImagen" (change)=cargarImg($event) />
+                    </div>
+                </div>
+            </div>
+
+            <br><br>
+            <!-- SUBMIT -->
+            <p class="boton btn-primary" (click)="onSubmit()"> Guardar </p>
+
+        </form>
+    </div>
+    <app-loading class="overlay" style="display: none"></app-loading>
+    <app-uploading class="overlay" style="display: none"></app-uploading>
+</div>

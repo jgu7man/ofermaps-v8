@@ -1,0 +1,47 @@
+<app-backbar></app-backbar>
+<div id="vistaCode" class="container content">
+    <div class="row" id="code">
+        <div class="col s12 center">
+            <h5>{{ oferta.oNombre }}</h5>
+        </div>
+        <div class="col s12 m3 center">
+            <div class="code">
+                <ngx-qrcode [qrc-value]="code" qrc-class="codeImg"></ngx-qrcode>
+            </div>
+            <p>Muestra este código para hacer valer tu oferta</p>
+        </div>
+    </div>
+    <div *ngIf="empresa" id="datosEmpresa" class="row datos">
+        <div class="col s3">
+            <div id="empImg" [routerLink]="['/empresa/vista', oferta.idEmpresa]">
+                <img src="{{ empresa.empImg }}" alt="" />
+            </div>
+        </div>
+        <div class="col s9">
+            <p class="nombre">{{ empresa.empName }}</p>
+        </div>
+    </div>
+    <div class="row datos" id="oferta">
+        <div class="col s6" id="ofertaImg">
+            <img src="{{ oferta.oImagen }}" alt="" />
+        </div>
+        <div class="col s6">
+            <ul>
+                <li>
+                    <span *ngIf="oferta.oTipo.includes('Bono')">$</span> {{ oferta.oCantidad }}
+                    <span *ngIf="oferta.oTipo.includes('Descuento')">%</span>
+                    <span *ngIf="oferta.oTipo.includes('Equivalencia')">X</span> {{ oferta.oCantAux }} {{ oferta.oProdserv }}
+                </li>
+                <li><b>VENCE:</b> {{ oferta.oCaducidad.toLocaleDateString() }}</li>
+            </ul>
+        </div>
+        <div class="col s12">
+            <h6>Condiciones</h6>
+            <ul>
+                <li *ngFor="let condicion of oferta.oCondiciones">{{ condicion }}</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<app-navbar></app-navbar>
+<app-loading class="overlay"></app-loading>

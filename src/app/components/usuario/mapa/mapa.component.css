@@ -1,0 +1,27 @@
+agm-map {
+    height: 100vh;
+}
+
+#listaMode {
+    display: none;
+}
+
+.boton-ver {
+    height: 2em;
+    text-align: center;
+    line-height: 2;
+    margin: .5em !important;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+    width: 7em;
+    border: none;
+    border-radius: 5em;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, .3);
+    position: relative;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+    cursor: pointer;
+    transition: all .4s;
+}

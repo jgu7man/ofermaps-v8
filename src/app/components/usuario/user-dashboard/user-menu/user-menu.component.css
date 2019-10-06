@@ -1,0 +1,47 @@
+#menuContent {
+    position: fixed;
+    background: #fff;
+    box-shadow: -2px 0px 2px rgba(0, 0, 0, 0.5);
+    z-index: 10;
+    width: 50%;
+    right: 0%;
+    top: 8%;
+}
+
+#logo {
+    padding: 2em;
+}
+
+#logo img {
+    width: 150px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#linkList {
+    padding: 1em;
+}
+
+#linkList li {
+    margin-bottom: .5em !important
+}
+
+.fixed-action-btn {
+    top: 1em !important;
+}
+
+.btn-floating {
+    background: linear-gradient( -30deg, #c1272d, #c56a3a);
+    transform: rotate(180deg) !important
+}
+
+li .btn-floating {
+    top: -1em;
+}
+
+.menu-btn {
+    background: #C1272D;
+    bottom: 1em;
+    position: absolute;
+}

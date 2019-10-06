@@ -1,0 +1,138 @@
+/* DASHBOARD */
+
+.titleBar {
+    position: fixed;
+    background: #fff;
+    margin: 0;
+    width: 100%;
+    padding: .3em;
+    z-index: 10;
+}
+
+#profile {
+    width: 33vw;
+    height: 33vw;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, .3);
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+}
+
+.editIcon {
+    float: right;
+    right: 10vw;
+    top: 1vh;
+    position: relative;
+    font-size: x-large;
+    color: #C1272D;
+}
+
+.toolIcon {
+    font-size: x-large;
+    color: #C1272D;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3)
+}
+
+.dashcard {
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, .5);
+    border-radius: 2em;
+    padding-bottom: 1em !important;
+}
+
+#profileCard {
+    max-height: 275px;
+}
+
+#dataProfile {
+    top: -3em;
+    position: relative;
+}
+
+#dataProfile p {
+    margin: 0;
+}
+
+.titleCard {
+    line-height: 2 !important;
+    padding-left: 8vw;
+    font-size: 2em !important;
+    margin-bottom: 0;
+}
+
+
+/* MENU */
+
+.menu {
+    background: #ffffff;
+    height: 12vh;
+    position: fixed;
+    z-index: 15;
+    bottom: -4%;
+    width: 100vw !important;
+    border-radius: 2em;
+    box-shadow: 0px -5px 10px rgba(0, 0, 0, .5);
+    transition: all .5s ease-in-out;
+}
+
+.menu::-webkit-scrollbar {
+    width: 5px;
+}
+
+.menu::-webkit-scrollbar:hover {
+    width: 10px;
+}
+
+.menu::-webkit-scrollbar-track {
+    background: #CCC;
+}
+
+.menu::-webkit-scrollbar-thumb {
+    background: #C1272D;
+    border-radius: 3px;
+}
+
+.menu-open {
+    transition: all .5s ease-in-out;
+    overflow: auto;
+    height: 104vh;
+    padding: 5vh;
+}
+
+#nueva img {
+    position: relative;
+    left: 50%;
+    top: -2em;
+    transform: translateX(-50%);
+    background: #fff;
+}
+
+#nueva {
+    height: 1.5em;
+}
+
+@media screen and (min-width: 700px) {
+    #profile {
+        width: 100px;
+        height: 100px;
+    }
+    .dashboard {
+        display: flex;
+        flex-direction: row;
+    }
+    .menu {
+        position: relative;
+        z-index: 0;
+        max-width: 33vw !important;
+        top: 8em;
+    }
+    .contenido {
+        min-width: 60vw !important;
+    }
+    .dashboard .container {
+        width: 90% !important;
+    }
+}

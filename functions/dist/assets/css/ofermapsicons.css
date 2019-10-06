@@ -1,0 +1,21 @@
+@font-face {
+    font-family: 'ofermapsicons';
+    src: url('../fonts/ofermapsicons/ofermapsicons.eot?ks6wkz');
+    src: url('../fonts/ofermapsicons/ofermapsicons.eot?ks6wkz#iefix') format('embedded-opentype'), url('../fonts/ofermapsicons/ofermapsicons.ttf?ks6wkz') format('truetype'), url('../fonts/ofermapsicons/ofermapsicons.woff?ks6wkz') format('woff'), url('../fonts/ofermapsicons/ofermapsicons.svg?ks6wkz#ofermapsicons') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+i {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'ofermapsicons' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}

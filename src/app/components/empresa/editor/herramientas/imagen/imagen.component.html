@@ -1,0 +1,17 @@
+<div class="row tit">
+    <div class="col s12">
+        <h3 class="tituloEditor">IMAGEN</h3>
+    </div>
+</div>
+
+<app-filtro></app-filtro>
+
+<div class="row box" id="cajaImagen">
+    <div class="col s12" id="cajaImagen">
+        <label for="">Cargar una imagen</label>
+        <div class="file-field input-field col s12">
+            <span class="boton btn-secondary upfile" style="left: 45%">Subir Archivo</span>
+            <input type="file" name="imagenEl" id="imagenEl" (click)="bloqueImagen()" (change)="cargarImagen($event)" />
+        </div>
+    </div>
+</div>

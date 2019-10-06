@@ -1,0 +1,24 @@
+<div class="row tit">
+    <div class="col s12">
+        <h3 class="tituloEditor">FONDO</h3>
+    </div>
+</div>
+
+<div class="row box" id="cajaFondo">
+    <div class="col s12" id="cajaImagen">
+        <label for="">Cargar imagen de fondo</label>
+        <div class="file-field input-field col s12">
+            <span class="boton btn-secondary upfile" style="left: 45%">Subir Archivo</span>
+            <input type="file" name="fondo" id="fondo" (change)="cargarFondo($event)" />
+        </div>
+    </div>
+
+    <div class="col s12">
+        <label for="">Elegir un color de fondo</label>
+        <color-swatches height="150" width="95%" (onChangeComplete)="bgColor($event)"></color-swatches>
+    </div>
+
+    <div class="row ajustes">
+        <app-ajustar-bg></app-ajustar-bg>
+    </div>
+</div>

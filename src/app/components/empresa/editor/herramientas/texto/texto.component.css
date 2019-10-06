@@ -1,0 +1,21 @@
+#texto {
+    color: #e3e3e3;
+}
+
+.h1 {
+    font-size: xx-large;
+}
+
+.h2 {
+    font-size: x-large;
+}
+
+.h3 {
+    font-size: large;
+}
+
+.legend {
+    font-style: italic;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 700;
+}

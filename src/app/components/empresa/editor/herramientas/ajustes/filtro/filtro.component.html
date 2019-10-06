@@ -1,0 +1,49 @@
+<div class="row box filtroBox" style="display: none">
+    <label for="rotate">Rotar</label>
+    <input type="range" name="rotate" id="rotate" min="-180" max="180" value="0" [(ngModel)]="rot" (change)="rotate()">
+    <input type="number" class="contador" name="rotate" id="rotate" min="-180" max="180" placeholder="0" value="rot" [(ngModel)]="rot" (change)="rotate()">
+
+    <div class="col s12 control">
+        <label for="brillo">brillo</label>
+        <input type="range" name="brillo" id="brillo" min="0" max="200" value="100" [(ngModel)]="bri" (change)="brillo(bri)">
+        <input type="number" name="brillo" id="brillo" class="contador" min="0" max="200" value="100" [(ngModel)]="bri" (change)="brillo(bri)">
+    </div>
+
+    <div class="col s12 control">
+        <label for="contraste">contraste</label>
+        <input type="range" name="contraste" id="contraste" min="0" max="200" value="100" [(ngModel)]="con" (change)="contraste(con)">
+        <input type="number" name="contraste" id="contraste" class="contador" min="0" max="200" value="100" [(ngModel)]="con" (change)="contraste(con)">
+    </div>
+
+    <div class="col s12 control">
+        <label for="invert">invert</label>
+        <input type="range" name="invert" id="invert" min="0" max="100" value="0" [(ngModel)]="inv" (change)="invert(inv)">
+        <input type="number" name="invert" id="invert" class="contador" min="0" max="100" value="0" [(ngModel)]="inv" (change)="invert(inv)">
+    </div>
+
+    <div class="col s12 control">
+        <label for="saturation">saturation</label>
+        <input type="range" name="saturation" id="saturation" min="0" max="200" value="100" [(ngModel)]="sat" (change)="saturation(sat)">
+        <input type="number" name="saturation" id="saturation" class="contador" min="0" max="200" value="100" [(ngModel)]="sat" (change)="saturation(sat)">
+    </div>
+
+    <div class="col s12 control">
+        <label for="hue">hue</label>
+        <input type="range" name="hue" id="hue" min="0" max="360" value="0" [(ngModel)]="hu" (change)="hue(hu)">
+        <input type="number" name="hue" id="hue" class="contador" min="0" max="360" value="0" [(ngModel)]="hu" (change)="hue(hu)">
+    </div>
+
+    <div class="col s12 control">
+        <label for="sepia">sepia</label>
+        <input type="range" name="sepia" id="sepia" min="0" max="100" value="0" [(ngModel)]="sep" (change)="sepia(sep)">
+        <input type="number" name="sepia" id="sepia" class="contador" min="0" max="100" value="0" [(ngModel)]="sep" (change)="sepia(sep)">
+    </div>
+
+    <div class="col s12 control">
+        <label for="blur">blur</label>
+        <input type="range" name="blur" id="blur" min="0" max="100" value="0" [(ngModel)]="blu" (change)="blur(blu)">
+        <input type="number" name="blur" id="blur" class="contador" min="0" max="100" value="0" [(ngModel)]="blu" (change)="blur(blu)">
+    </div>
+
+    <app-ordenar></app-ordenar>
+</div>

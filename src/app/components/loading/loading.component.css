@@ -1,0 +1,26 @@
+#loading {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 20vw;
+}
+
+#loading img {
+    position: relative;
+    width: 100%;
+    max-height: 30vh;
+    animation: loading 1s infinite ease-in-out
+}
+
+@keyframes loading {
+    0% {
+        transform: rotatey(0deg);
+    }
+    /* 50% {
+        transform:  rotate(180deg);
+    } */
+    100% {
+        transform: rotatey(360deg);
+    }
+}

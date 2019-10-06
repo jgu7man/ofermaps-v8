@@ -1,0 +1,45 @@
+.container {
+    padding-bottom: 5em
+}
+
+.imgPreview {
+    width: 100%;
+    overflow: hidden;
+}
+
+.imgPreview img {
+    width: 100%;
+    background: #fff;
+}
+
+.boton {
+    width: 10em !important;
+}
+
+a.boton {
+    padding: 16px 40px;
+    line-height: 4.5;
+    left: 0;
+}
+
+.oferDatos {
+    text-transform: capitalize;
+    margin: 10px 0;
+}
+
+.name {
+    font-weight: 800;
+    text-transform: uppercase
+}
+
+.ads {
+    padding: 1em;
+    background: #c15d2d;
+    color: white;
+    border: dashed;
+}
+
+.ads a {
+    color: black !important;
+    font-weight: 700 !important
+}

@@ -1,0 +1,83 @@
+<div class="container ubicacion">
+    <div class="title">
+        <h4 class="ubicacionTitle title center">Ubica el negocio</h4>
+        <select style="display: block" [(ngModel)]="ubicacion.idEmpresa" #empresa="ngModel" name="empresa" id="empresa">
+            <option *ngFor="let emp of empresas" [value]="emp.idEmpresa">{{emp.nNegocio}}</option>
+        </select>
+    </div>
+
+    <div class="tomaps" [routerLink]="['/admin/regist/mapa']">
+        <img src="../../../../assets/img/Iso.svg" alt="ofermaps" width="100px" />
+    </div>
+
+    <div class="inst">
+        <p class="center">
+            Revisa que los datos de tu negocio están correctos, o llena los campos manualmente.
+        </p>
+    </div>
+
+    <form class="oferForm" name="ubi" #ubi="ngForm" (ngSubmit)="onSubmit()" action="#" method="POST" id="ubi" onsubmit="return false">
+        <!-- calle -->
+        <div class="row">
+            <div class="input-field col s12">
+                <input class="ofinput" placeholder="Calle" type="text" name="dCalleynum" id="dCalleynum" #dCalleynum="ngModel" [(ngModel)]="ubicacion.dCalleynum" required />
+                <div class="error" *ngIf="dCalleynum.invalid && (dCalleynum.dirty || dCalleynum.touched)">
+                    <span class="alertForm" *ngIf="dCalleynum.errors['required']">
+                        El nombre de la calle es necesaria.
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Colonia -->
+        <div class="row">
+            <div class="input-field col s12">
+                <input class="ofinput" placeholder="Colonia" type="text" name="dColonia" id="dColonia" #dColonia="ngModel" [(ngModel)]="ubicacion.dColonia" required />
+                <div class="error" *ngIf="dColonia.invalid && (dColonia.dirty || dColonia.touched)">
+                    <span class="alertForm" *ngIf="dColonia.errors['required']">
+                        La colonia es necesaria.
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s12">
+                <input class="ofinput" placeholder="Ciudad" type="text" name="dCiudad" id="dCiudad" #dCiudad="ngModel" [(ngModel)]="ubicacion.dCiudad" required />
+                <div class="error" *ngIf="dCiudad.invalid && (dCiudad.dirty || dCiudad.touched)">
+                    <span class="alertForm" *ngIf="dCiudad.errors['required']">
+                        La ciudad es necesaria.
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s12">
+                <input class="ofinput" placeholder="Estado" type="text" name="dEstado" id="dEstado" #dEstado="ngModel" [(ngModel)]="ubicacion.dEstado" required />
+                <div class="error" *ngIf="dEstado.invalid && (dEstado.dirty || dEstado.touched)">
+                    <span class="alertForm" *ngIf="dEstado.errors['required']">
+                        El estado es necesario.
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s12">
+                <input class="ofinput" placeholder="Pais" type="text" name="dPais" id="dPais" #dPais="ngModel" [(ngModel)]="ubicacion.dPais" required />
+                <div class="error" *ngIf="dPais.invalid && (dPais.dirty || dPais.touched)">
+                    <span class="alertForm" *ngIf="dPais.errors['required']">
+                        El país es necesario.
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <input type="hidden" name="lat" [(ngModel)]="ubicacion.lat" #lat="ngModel" required>
+        <input type="hidden" name="long" [(ngModel)]="ubicacion.long" #long="ngModel" required>
+
+        <input type="submit" name="submit" id="registrarubi" value="GUARDAR" class="boton btn-primary" [disabled]="!ubi.form.valid" />
+    </form>
+</div>
+<app-loading class="overlay" style="display: none"></app-loading>

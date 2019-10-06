@@ -1,0 +1,19 @@
+.oferMenu {
+    position: fixed;
+    bottom: 0;
+    height: 2em;
+    min-width: 100vw;
+    box-shadow: 0px -2px 3px rgba(0, 0, 0, .3);
+    font-size: 2em;
+    line-height: 0;
+    padding: .5em;
+    color: #c84943;
+    z-index: 6;
+    background: #fff;
+}
+
+#omIcon img {
+    width: 35px;
+    top: -33px;
+    position: relative;
+}

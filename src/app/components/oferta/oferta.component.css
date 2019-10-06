@@ -1,0 +1,105 @@
+.ofertaContainer {
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+
+.ofertaContainer img {
+    height: 100%;
+    max-width: 150%;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: all .3s;
+    z-index: 6;
+}
+
+.zoomInOut {
+    max-width: 100% !important;
+    height: auto !important;
+    z-index: 5 !important;
+}
+
+.overlay {
+    z-index: 5;
+}
+
+#empImg img {
+    height: 100%;
+    max-width: 200px;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+}
+
+#empImg {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    border-radius: 50%;
+    right: 1.5em;
+    top: 1em;
+}
+
+#oferInfo {
+    padding: 0em 3em;
+    background: #fff;
+    position: fixed;
+    top: 106vh;
+    width: 100%;
+}
+
+.oferOpen {
+    top: 16vh !important
+}
+
+#oferInfo h5 {
+    text-transform: uppercase;
+    font-weight: 600;
+    margin: 5px 0;
+}
+
+.datos {
+    background: #333;
+    color: #fff;
+    padding: .5em;
+    border-radius: 1em;
+}
+
+#oferInfo h6 {
+    font-weight: 600;
+    margin: 5px 0;
+}
+
+#oferInfo p {
+    margin: 5px 0;
+}
+
+#codeArea {
+    position: relative;
+    bottom: -3em;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    width: 80%;
+}
+
+.codeBtn {
+    background: #c12d2d;
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 2em;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    font-weight: 700;
+    text-transform: uppercase;
+    border: none;
+}
+
+.codeBtn[disabled] {
+    background: #333;
+}

@@ -1,0 +1,75 @@
+<div class="textBox box" style="display: none">
+    <div id="listo">
+        <i class="fas fa-check-circle"></i>
+        <span> LISTO</span>
+    </div><br>
+    <label for="rotate">Rotar</label>
+    <input type="range" name="rotate" id="rotate" min="-180" max="180" value="0" [(ngModel)]="rot" (change)="rotate()">
+    <input type="number" class="contador" name="rotate" id="rotate" min="-180" max="180" placeholder="0" value="rot" [(ngModel)]="rot" (change)="rotate()">
+
+    <div class="row">
+        <label for="">Color</label>
+        <color-hue-picker color="#fff" (onChangeComplete)="changeComplete($event)"></color-hue-picker>
+        <color-compact color="#fff" (onChangeComplete)="changeComplete($event)"></color-compact>
+        <label for="">Transparencia</label>
+        <color-alpha-picker color="#000" (onChangeComplete)="transparencia($event)"></color-alpha-picker>
+    </div>
+
+    <div class="row">
+        <label for="">Formato</label><br>
+        <div class="col s2">
+            <i id="left" class="fas fa-align-left formatBtn aling formatSel" (click)="aling('left')"></i>
+        </div>
+        <div class="col s2">
+            <i id="center" class="fas fa-align-center formatBtn aling" (click)="aling('center')"></i>
+        </div>
+        <div class="col s2">
+            <i id="right" class="fas fa-align-right formatBtn aling" (click)="aling('right')"></i>
+        </div>
+        <div class="col s2">
+            <i id="bold" class="fas fa-bold formatBtn" (click)="bold()"></i>
+        </div>
+        <div class="col s2">
+            <i id="italic" class="fas fa-italic formatBtn" (click)="italic()"></i>
+        </div>
+        <div class="col s2">
+            <i id="upper" class="fas fa-font formatBtn" (click)="upper()"></i>
+        </div>
+        <div class="col s9">
+            <div class="fontPicker" [(fontPicker)]="font" [fpSizeSelect]=false [fpStyleSelect]=false [fpWidth]="'320px'" [fpPosition]="'top'" (fontPickerChange)="getFont($event)" [ngStyle]="font?.getStyles()">
+                {{font?.family}}
+            </div>
+        </div>
+
+        <div class="col s3">
+            <input type="number" name="size" id="size" class="formatBtn" [(ngModel)]="size" (change)="sizing(size)">
+        </div>
+    </div>
+
+
+    <div class="row">
+        <label for="">Sombra</label><br>
+        <div class="col s3">
+            <input type="number" name="left" id="left" class="num" [(ngModel)]="shadow.left" value="0" min="-10" max="10" (change)="sombra()">
+            <span class="px">px</span><br>
+            <label class="lbl" for="left">left</label>
+        </div>
+        <div class="col s3">
+            <input type="number" name="top" id="top" class="num" [(ngModel)]="shadow.top" value="0" min="-10" max="10" (change)="sombra()">
+            <span class="px">px</span><br>
+            <label class="lbl" for="top">top</label>
+        </div>
+        <div class="col s3">
+            <input type="number" name="ext" id="ext" class="num" [(ngModel)]="shadow.ext" value="0" min="0" max="10" (change)="sombra()">
+            <span class="px">px</span><br>
+            <label class="lbl" for="ext">ext</label>
+        </div>
+        <div class="col s3">
+            <input type="number" name="trans" id="trans" class="num" [(ngModel)]="shadow.trans" value="0" min="1" max="9" (change)="sombra()">
+            <span class="px">px</span><br>
+            <label class="lbl" for="trans">trans</label>
+        </div>
+    </div>
+
+    <app-ordenar></app-ordenar>
+</div>

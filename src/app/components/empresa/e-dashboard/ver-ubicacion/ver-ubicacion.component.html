@@ -1,0 +1,20 @@
+<app-backbar></app-backbar>
+<agm-map [gestureHandling]="'greedy'" [latitude]="lat" [longitude]="long" [zoom]="15" [streetViewControl]="false" [zoomControl]="false" [clickableIcons]="false">
+    <agm-marker [latitude]="lat" [longitude]="long" [iconUrl]="iconMap.iconCurrent"></agm-marker>
+
+    <agm-marker *ngFor="let ubi of ubicaciones" [latitude]="ubi.lat" [longitude]="ubi.long" [iconUrl]="iconMap.iconUrl">
+        <agm-info-window>
+            <h6 class="oferLink">
+                {{ ubi.dColonia }}
+            </h6>
+            <ul>
+                <li> {{ubi.dCalleynum}} </li>
+                <li> {{ubi.dColonia}} </li>
+                <li> {{ubi.dCiudad}} </li>
+                <li> {{ubi.dEstado}} </li>
+                <li> {{ubi.dPais}} </li>
+            </ul>
+        </agm-info-window>
+    </agm-marker>
+</agm-map>
+<app-navbar></app-navbar>

@@ -1,0 +1,19 @@
+.icon i {
+    font-size: 2em;
+    margin: auto 0;
+    line-height: 1.5;
+    background: linear-gradient( -30deg, #c1272d, #c56a3a);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.icon,
+#navIcon {
+    max-height: 70px;
+    margin: 0 auto !important;
+    min-width: 20% !important
+}
+
+.openContent {
+    top: 0em !important
+}

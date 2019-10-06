@@ -1,0 +1,15 @@
+.add {
+    position: relative;
+    bottom: -0.75em;
+    font-size: 2em;
+    color: #C1272D;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, .3);
+}
+
+.ofer {
+    padding: 10px;
+}
+
+.ofer img {
+    width: 100%
+}

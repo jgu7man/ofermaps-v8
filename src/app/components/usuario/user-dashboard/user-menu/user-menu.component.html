@@ -4,12 +4,12 @@
     </a>
     <ul>
         <li>
-            <a class="btn-floating" title="Nueva oferta" (click)="auth.singOut()">
+            <a class="btn-floating" title="Cerrar sesión" (click)="auth.singOut()">
                 <i class="fas fa-sign-out-alt"></i>
             </a>
         </li>
         <li *ngIf="!admin">
-            <a class="btn-floating" title="Nueva oferta" [routerLink]="['/usuario/personalizar']">
+            <a class="btn-floating" title="Crear cuenta de empresa" [routerLink]="['/registro/empresa']">
                 <i class="fas fa-building"></i>
             </a>
         </li>

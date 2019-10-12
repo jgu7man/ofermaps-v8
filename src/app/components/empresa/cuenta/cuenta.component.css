@@ -1,7 +1,7 @@
 .dashcard {
     box-shadow: 3px 3px 10px rgba(0, 0, 0, .5);
     border-radius: 2em;
-    padding-bottom: 1em !important;
+    padding: 1em !important;
 }
 
 #adsCont {

@@ -35,9 +35,17 @@ export class HerramientasComponent implements OnInit {
   getScreen(){
     $("app-preview").fadeToggle();
     $("app-backbar").toggle()
-    // html2canvas(document.querySelector('#espacio')).then((canvas)=> {
-    //   document.querySelector('#preCanvas').appendChild(canvas)
-    // })
+
+    html2canvas(
+      document.querySelector('#espacio'),
+      {
+        allowTaint: true,
+        useCORS: true,
+        scale: 3
+      }
+    ).then((canvas) => {
+      document.querySelector('#preCanvas').appendChild(canvas)
+    })
 
     var oferta = JSON.parse(sessionStorage.getItem('pend'))
     var nombre = oferta.oNombre.replace(/\s/g, "")
@@ -45,15 +53,15 @@ export class HerramientasComponent implements OnInit {
     var node = document.getElementById('espacio');
     var pre = document.getElementById('preCanvas')
 
-    domtoimage.toPng(node)
-    .then(function (dataUrl) {
-      var img = new Image()
-        img.src = dataUrl;
-        pre.appendChild(img);
-    })
-    .catch(function (error) {
-        console.error('oops, something went wrong!', error);
-    });
+    // domtoimage.toPng(node)
+    // .then(function (dataUrl) {
+    //   var img = new Image()
+    //     img.src = dataUrl;
+    //     pre.appendChild(img);
+    // })
+    // .catch(function (error) {
+    //     console.error('oops, something went wrong!', error);
+    // });
 
      
     $(".herramientas").addClass('closeHerr');

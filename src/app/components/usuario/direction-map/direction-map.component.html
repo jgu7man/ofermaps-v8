@@ -1,0 +1,8 @@
+<app-backbar></app-backbar>
+<agm-map *ngIf="origin.latitude != 0 && destination.latitude != 0" appDirectionsMap [gestureHandling]='"greedy"' [showDirection]="this.displayDirections" [origin]="origin" [destination]="destination" [zoom]="15" [streetViewControl]="false" [zoomControl]="false"
+    [clickableIcons]="false">
+    <agm-marker [latitude]="origin.latitude" [longitude]="origin.longitude" [iconUrl]="iconMap.iconCurrent"></agm-marker>
+    <agm-marker [latitude]="destination.latitude" [longitude]="destination.longitude" [iconUrl]="iconMap.iconUrl"></agm-marker>
+</agm-map>
+<app-ofer-navbar [idEmpresa]="idEmpresa"></app-ofer-navbar>
+<app-loading class="overlay"></app-loading>

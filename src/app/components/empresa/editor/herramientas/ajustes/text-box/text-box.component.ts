@@ -31,8 +31,13 @@ export class TextBoxComponent implements OnInit {
 
    
   ngOnInit() {
-    $("#listo").click(()=> {
-      var target = $(".intext").hasClass('seleccionado');
+    
+     
+      
+  }
+
+  onListo() {
+     var target = $(".intext").hasClass('seleccionado');
     if( target ) {
         $(".intext textarea").attr('disabled', 'disabled');
         $(".intext").removeClass('seleccionado');
@@ -40,8 +45,6 @@ export class TextBoxComponent implements OnInit {
         $("#cajaTextos").slideToggle();
       }
       this.editorService.historial()
-    })
-      
   }
 
   rotate(){

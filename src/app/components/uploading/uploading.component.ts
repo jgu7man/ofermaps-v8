@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { EmpresaService } from '../../services/empresa.service';
 import { UploadService } from 'src/app/services/upload.service';
 import { OfertasService } from '../../services/ofertas.service';
@@ -12,13 +12,14 @@ import { MuestrasService } from 'src/app/services/muestras.service';
 })
 export class UploadingComponent implements OnInit {
 
-  public loadValue = 0
-  public textValue = 0
+  @Input() loadValue = 0
+  @Input() textValue = 0
   public fileToUpload
   constructor(
     public _empresa: EmpresaService,
     public _oferta: OfertasService,
     public _muestras: MuestrasService,
+    public _upload: UploadService
   ) { }
 
   ngOnInit() {
@@ -27,6 +28,10 @@ export class UploadingComponent implements OnInit {
 
 
   listenPorcentaje() {
+    this._upload.setPorcentaje.subscribe(porcent => {
+      this.textValue = Math.round(porcent)
+      this.loadValue = porcent
+    })
     this._empresa.setPorcentaje.subscribe(porcent => {
       this.textValue = Math.round(porcent)
       this.loadValue = porcent

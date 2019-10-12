@@ -184,7 +184,7 @@
 
             <br><br>
             <!-- IMAGEN DE OFERTA -->
-            <div class="row">
+            <div class="row" *ngIf="!hasImage">
                 <h5 class="center">Imagen de oferta</h5>
                 <div class="col s6">
                     <p class="boton btn-secondary" (click)="ofertaPendiente()" style="width: 10em; float: left;">Diseñar</p>

@@ -10,6 +10,7 @@ import { PlanModel } from '../../../models/Planes.model';
 export class CuentaComponent implements OnInit {
 
   public plan: PlanModel
+  public vence: any
   constructor(
     private fs: AngularFirestore
   ) {
@@ -21,6 +22,7 @@ export class CuentaComponent implements OnInit {
     this.fs.collection('empresas').ref.doc(user.m)
       .collection('plan').doc('actual').get().then(doc => {
         this.plan = doc.data() as PlanModel
+        this.vence = doc.data().vence.toDate().toLocaleDateString()
     })
   }
 

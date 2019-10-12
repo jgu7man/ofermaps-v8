@@ -26,7 +26,6 @@ export class SuscripcionesComponent implements OnInit {
 
   querySuscrip(id) {
     this._suscripciones.getSuscripByUser(id).then(docs => {
-      console.log(docs);
       this.suscripciones = docs.suscripciones
       this.actualizaciones = docs.actualizaciones
      })

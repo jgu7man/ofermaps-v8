@@ -32,11 +32,9 @@ export class RegistUbicacionComponent implements OnInit {
     emps.forEach(doc => {
       this.empresas.push(doc.data())
     })
-    console.log(this.empresas);
   }
 
   onSubmit() {
-    console.log(this.ubicacion);
     this._ubicacion.saveUbicacion(this.ubicacion)
     sessionStorage.removeItem('ubi');
     this.ubicacion = new UbicacionEmpresa("","","","","","",'','');

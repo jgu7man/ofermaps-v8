@@ -10,7 +10,9 @@ import interact from 'interactjs';
   public idDesign
   constructor() {
     var design = JSON.parse(sessionStorage.getItem('design'))
-    this.idDesign = design.idDesign
+    if (design) {
+      this.idDesign = design.idDesign
+    }
     }
 
     elemEditable(){

@@ -20,6 +20,8 @@
 
         <app-tus-ofertas *ngIf="empresa.idEmpresa != ''" [idEmpresa]="empresa.idEmpresa"></app-tus-ofertas>
     </div>
+    <app-footer *ngIf="empresa.idEmpresa != ''"></app-footer>
 </div>
+<router-outlet></router-outlet>
 <app-empresa-menu [idEmpresa]="empresa.idEmpresa"></app-empresa-menu>
 <app-loading class="overlay"></app-loading>

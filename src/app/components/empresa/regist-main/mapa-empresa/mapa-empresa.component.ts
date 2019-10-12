@@ -47,7 +47,7 @@ export class MapaEmpresaComponent implements OnInit {
       this.empUbi.lat = this.lat
       this.empUbi.long = this.lng
       sessionStorage.setItem('ubi', JSON.stringify(this.empUbi))
-      this._router.navigate(['/usuario/ubicacion'])
+      this._router.navigate(['/registro/ubicacion'])
     });
   }
 }

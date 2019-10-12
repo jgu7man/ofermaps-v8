@@ -4,9 +4,12 @@ import { AppRoutingModule } from "./app-routing.module";
 import { routing, appRountingProviders } from "./app-routing.module";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 // import { MaterializeModule } from "angular2-materialize";
+
 import { CompareValidatorDirective } from "./directives/validator.directive";
 import { PwdToggleDirective } from "./directives/pwd-toggle.directive";
+import { DirectionsMapDirective } from "./directives/directions.directive";
 import { TextMaskModule } from "angular2-text-mask";
+
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { HttpClientModule } from "@angular/common/http";
 import { ColorHueModule } from "ngx-color/hue";
@@ -21,6 +24,12 @@ import { NgxQRCodeModule } from 'ngx-qrcode2';
 import { ZXingScannerModule } from "@zxing/ngx-scanner";
 import {RoundProgressModule} from 'angular-svg-round-progressbar';
 import 'hammerjs';
+import { HammerGestureConfig, HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
+export class MyHammerConfig extends HammerGestureConfig  {
+  overrides = <any>{
+      'swipe': {velocity: 0.4, threshold: 20} // override default settings
+  }
+}
 
 // Google
 // import { LoginModule } from "./log/login/login.module";
@@ -120,11 +129,21 @@ import { RegistEmpresaComponent } from './components/admin/pruebas/personalizar/
 import { RegistUbicacionComponent } from './components/admin/pruebas/ubicacion/ubicacion.component'
 import { CrearOfertaPruebaComponent } from './components/admin/pruebas/crear-oferta/crear-oferta.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { AlertaComponent } from './components/alerta/alerta.component';
+
+import { StepsComponent } from "./components/tutorial/steps/steps.component";
+import { TutorialComponent } from './components/tutorial/tutorial.component';
+import { InicioTutorialComponent } from './components/tutorial/inicio-tutorial/inicio-tutorial.component';
+import { StepComponent } from './components/tutorial/step/step.component';
+import { EmpresaTutorialComponent } from './components/tutorial/empresa-tutorial/empresa-tutorial.component';
+import { PopEmailComponent } from './components/oferta/pop-email/pop-email.component';
+import { DirectionMapComponent } from './components/usuario/direction-map/direction-map.component';
 
 @NgModule({
   declarations: [
     CompareValidatorDirective,
     PwdToggleDirective,
+    DirectionsMapDirective,
     AppComponent,
     HomeComponent,
     EmpresaComponent,
@@ -198,7 +217,15 @@ import { FooterComponent } from './components/footer/footer.component';
     RegistEmpresaComponent,
     RegistUbicacionComponent,
     CrearOfertaPruebaComponent,
-    FooterComponent
+    FooterComponent,
+    AlertaComponent,
+    StepsComponent,
+    TutorialComponent,
+    InicioTutorialComponent,
+    StepComponent,
+    EmpresaTutorialComponent,
+    PopEmailComponent,
+    DirectionMapComponent
   ],
   imports: [
     BrowserModule.withServerTransition({appId: 'ofermaps'}),
@@ -206,7 +233,6 @@ import { FooterComponent } from './components/footer/footer.component';
     routing,
     FormsModule,
     ReactiveFormsModule,
-    // MaterializeModule,
     TextMaskModule,
     BrowserAnimationsModule,
     HttpClientModule,
@@ -215,7 +241,6 @@ import { FooterComponent } from './components/footer/footer.component';
     ColorAlphaModule,
     ColorSwatchesModule,
     FontPickerModule,
-    // LoginModule,
     NgxQRCodeModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
@@ -234,7 +259,12 @@ import { FooterComponent } from './components/footer/footer.component';
     Title,
     {
       provide: FONT_PICKER_CONFIG,
+      
       useValue: DEFAULT_FONT_PICKER_CONFIG
+    },
+    {
+    provide: HAMMER_GESTURE_CONFIG,
+    useClass: MyHammerConfig,
     }
   ],
   bootstrap: [AppComponent]

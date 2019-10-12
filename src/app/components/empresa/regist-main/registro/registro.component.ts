@@ -28,7 +28,6 @@ export class RegistroComponent implements OnInit {
   }
 
   onSubmit() {
-    // console.log(this.adminEmpresa);
     this.PostAdmin.email = this.adminEmpresa.email;
     this.PostAdmin.password = this.adminEmpresa.contrasena;
 

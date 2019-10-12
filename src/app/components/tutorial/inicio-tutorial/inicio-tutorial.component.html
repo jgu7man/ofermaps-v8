@@ -1,0 +1,23 @@
+<div class="tutorial-overlay">
+    <div class="pop-up ">
+        <div class="row">
+            <div class="col s12">
+                <i class="fas fa-times" (click)="closeTuto()"></i>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 center">
+                <p><b> {{tutorial.messageH}} </b></p>
+                <p> {{tutorial.messageD}} </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12">
+                <button class="boton btn-secondary" (click)="offTuto()" [routerLink]="[tutorial.exit]">SALTAR TUTORIAL</button>
+            </div>
+            <div class="col s12">
+                <button class=" boton btn-primary" (click)="onTuto()" [routerLink]="[tutorial.next] ">SIGUIENTE</button>
+            </div>
+        </div>
+    </div>
+</div>

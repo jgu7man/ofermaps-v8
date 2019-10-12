@@ -62,6 +62,17 @@
                 <li *ngIf="caduc">
                     La oferta ha caducado, no será vista por las personas
                 </li>
+                <li>
+                    Visible:
+                    <div class="switch">
+                        <label>
+                            Off
+                            <input type="checkbox" (change)="setVisible($event)" [(ngModel)]="oferta.visible">
+                            <span class="lever"></span>
+                            On
+                        </label>
+                    </div>
+                </li>
             </ul>
         </div>
     </div>
@@ -79,10 +90,10 @@
             Cantidad máxima de códigos para repartir: {{oferta.oLimite}}
         </div>
 
-        <div class="col s12 ads">
+        <!-- <div class="col s12 ads">
             <a [routerLink]="['/empresa/planes']">ADQUIRIR MÁS</a><br />
             <span class="recom">Puedes adquirir más ofertas aumentando tu plan actual</span>
-        </div>
+        </div> -->
     </div>
 
     <!-- <div class="row">

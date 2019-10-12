@@ -1,8 +1,8 @@
 <app-e-navbar></app-e-navbar>
 <div class="container contenido" id="f-pago">
     <div class="row plan container">
-        <div class="col s12">
-            <div class="center">
+        <div class="col s12 center">
+            <div>
                 <h4>Vas a contratar el plan {{ plan.nombre }}</h4>
                 <span>¡Excelente eleccion!</span>
             </div>
@@ -13,7 +13,13 @@
         </div>
     </div>
 
-    <form class="oferForm" action="#" name="formadepago" #formadepago="ngForm" (ngSubmit)="onSubmit()" method="POST" id="formadepagoform" onsubmit="return false">
+    <div class="row valign-wrapper">
+        <div class="col s12 center">
+            En este momento nuestros paquetes son gratis
+        </div>
+    </div>
+
+    <!-- <form class="oferForm" action="#" name="formadepago" #formadepago="ngForm" (ngSubmit)="onSubmit()" method="POST" id="formadepagoform" onsubmit="return false">
         <h4 class="center-align">Crédito o débito</h4>
         <div class="row">
             <p class="opcionTarjeta" *ngFor="let item of tarjeta">
@@ -55,7 +61,7 @@
             <div class="col s12">
                 <p class="boton btn-secondary">CONECTAR</p>
             </div>
-        </div>
-        <input type="submit" value="CONFIRMAR" class="boton btn-primary" id="confirmar" />
-    </form>
+        </div> -->
+    <!-- </form> -->
+    <input (click)="onSubmit()" type="submit" value="CONFIRMAR" class="boton btn-primary" id="confirmar" />
 </div>

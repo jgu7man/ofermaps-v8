@@ -24,7 +24,9 @@ export class EmpresaService {
     private _router: Router
   ) {
     this.auth.user$.pipe().subscribe(user => {
-      this.user = user.uid
+      if (user) {
+        this.user = user.uid
+      }
     })
   }
 
@@ -88,7 +90,6 @@ export class EmpresaService {
             })
         })
     ).subscribe()
-    console.log('imagen de empresa agregada');
         
     // Asignar id de empresa al usuario propietario
     await this.fs.collection('usuarios').doc(this.user).update({
@@ -102,9 +103,8 @@ export class EmpresaService {
       z: user.z
     }))
     
-    console.log('empresa asignada a usuario')
 
-    this._router.navigate(['/usuario/ubicacion'])
+    this._router.navigate(['/registro/ubicacion'])
   }
 
 
@@ -138,7 +138,6 @@ export class EmpresaService {
                   this.fs.collection("empresas").doc(this.idEmpresa).update({
                     nAvatar: this.eAvatar
                   })
-                  console.log('imagen de empresa agregada');
               })
             })
         ).subscribe()
@@ -148,7 +147,15 @@ export class EmpresaService {
   async getEmpresa(idEmpresa: string) {
     await this.fs.collection('empresas').ref
       .doc(idEmpresa).get().then(doc => {
-      this.empresa = doc.data()
+        if (doc.exists) {
+          this.empresa = doc.data()
+        }
+      })
+    await this.fs.collection('empresas_muestras').ref
+      .doc(idEmpresa).get().then(doc => {
+        if (doc.exists) {
+          this.empresa = doc.data()
+        }
       })
     return this.empresa
   }
@@ -165,10 +172,21 @@ export class EmpresaService {
 
   async getEmpresaName(idEmpresa) {
     await this.fs.collection('empresas').doc(idEmpresa).ref.get().then(doc => {
-      this.empresa = {
+      if (doc.exists) {
+        this.empresa = {
         empId: doc.id,
         empName: doc.data().nNegocio,
         empImg: doc.data().nAvatar
+      }
+      }
+    });
+    await this.fs.collection('empresas_muestras').doc(idEmpresa).ref.get().then(doc => {
+      if (doc.exists) {
+        this.empresa = {
+        empId: doc.id,
+        empName: doc.data().nNegocio,
+        empImg: doc.data().nAvatar
+      }
       }
     });
     return this.empresa
@@ -179,9 +197,18 @@ export class EmpresaService {
   async getNumSusc(idEmpresa: string){
     var numSusc;
     await this.fs.collection('empresas').ref.doc(idEmpresa)
-    .collection('suscriptores').get().then( docs => {
-      numSusc = docs.size;
-    });
+      .collection('suscriptores').get().then(docs => {
+        numSusc = docs.size;
+
+        // revisar en las muestras
+        if (numSusc == 0) {
+          this.fs.collection('empresas_muestras').ref.doc(idEmpresa)
+            .collection('suscriptores').get().then(docs => {
+              numSusc = docs.size;
+          });
+        }
+      });
+    
     return numSusc
   }
 

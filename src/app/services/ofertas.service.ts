@@ -51,7 +51,6 @@ export class OfertasService {
                       oferta.oImagen = res;
                       
                         sessionStorage.setItem('pend', JSON.stringify(oferta))
-                        this.saveOferta(oferta)
                     })
                 })
             ).subscribe()
@@ -76,27 +75,27 @@ export class OfertasService {
         })
 
         this.fs.collection('ofertas').add({
-                idEmpresa: oferta.idEmpresa,
-                idOferta: oferta.idOferta,
-                keywords: oferta.keywords,
-                oCaducidad: oferta.oCaducidad,
-                oCanjes: oferta.oCanjes,
-                oCantAux: oferta.oCantAux,
-                oCantidad: oferta.oCantidad,
-                oCodes: oferta.oCodes,
-                oCondiciones: oferta.oCondiciones,
-                oImagen: oferta.oImagen,
-                oNombre: oferta.oNombre,
-                oProdserv: oferta.oProdserv,
-                oPublicado: oferta.oPublicado,
-                oTipo: oferta.oTipo
+            idEmpresa: oferta.idEmpresa,
+            idOferta: oferta.idOferta,
+            keywords: oferta.keywords,
+            oCaducidad: oferta.oCaducidad,
+            oCanjes: oferta.oCanjes,
+            oCantAux: oferta.oCantAux,
+            oCantidad: oferta.oCantidad,
+            oCodes: oferta.oCodes,
+            oLimite:oferta.oLimite,
+            oCondiciones: oferta.oCondiciones,
+            oImagen: oferta.oImagen,
+            oNombre: oferta.oNombre,
+            oProdserv: oferta.oProdserv,
+            oPublicado: oferta.oPublicado,
+            oTipo: oferta.oTipo
             }).then(ref => {
             this.fs.collection('ofertas').ref.doc(ref.id).update({
                 idOferta: ref.id
             }).then(res => {
                 $("app-loading").toggle()
                 sessionStorage.removeItem('pend')
-                // this.router.navigate(['/admin/regist/empresa'])
                 this.router.navigate(['/empresa/Dashboard'])
             })
         })
@@ -138,9 +137,19 @@ export class OfertasService {
         var id;
         await this.fs.collection('ofertas').doc(idOferta)
         .ref.get().then( doc => {
-            oferta = doc.data()
-            cad = oferta.oCaducidad.toDate()
-            id = doc.id
+            if (doc.exists) {
+                oferta = doc.data()
+                cad = oferta.oCaducidad.toDate()
+                id = doc.id
+            } 
+        })
+        await this.fs.collection('ofertas_muestras').doc(idOferta)
+        .ref.get().then( doc => {
+            if (doc.exists) {
+                oferta = doc.data()
+                cad = oferta.oCaducidad.toDate()
+                id = doc.id
+            }
         })
         return {oferta, cad, id}
     }
@@ -154,7 +163,20 @@ export class OfertasService {
                 ofertasEmpresa.push({idOfer: doc.id, data: doc.data()})
             })
             this.ofertasEmpresa = ofertasEmpresa
+        }).catch(err => console.log(err));
+        
+        if (this.ofertasEmpresa.length == 0) {
+            await this.fs.collection('ofertas_muestras').ref
+        .where('idEmpresa', '==', idEmpresa)
+        .get().then(docs => {
+            var ofertasEmpresa = []
+            docs.forEach( doc => {
+                ofertasEmpresa.push({idOfer: doc.id, data: doc.data()})
+            })
+            this.ofertasEmpresa = ofertasEmpresa
         }).catch( err => console.log(err));
+        }
+
         return this.ofertasEmpresa
     }
 
@@ -194,14 +216,18 @@ export class OfertasService {
             .collection('plan').doc('actual');
         
         plan.get().then(doc => {
-            plan.update({ vistas: doc.data().vistas - 1 })
+            if (doc.exists) {
+                plan.update({ vistas: doc.data().vistas - 1 })
+            }
         })
 
         oferta.get().then(doc => {
-            if (!doc.data().vistas) {
-                oferta.update({ vistas: 1 })
-            } else {
-                oferta.update({ vistas: doc.data().vistas + 1 })
+            if (doc.exists) {
+                if (!doc.data().vistas) {
+                    oferta.update({ vistas: 1 })
+                } else {
+                    oferta.update({ vistas: doc.data().vistas + 1 })
+                }
             }
         })
     }
@@ -210,7 +236,9 @@ export class OfertasService {
         const oferta = this.fs.collection('ofertas').ref.doc(idOferta);
 
         await oferta.get().then(doc => {
-            oferta.update({ oCodes: doc.data().oCodes + 1 })
+            if (doc.exists) {
+                oferta.update({ oCodes: doc.data().oCodes + 1 })
+            }
         })
 
         await this.fs.collection('codes').add({
@@ -227,7 +255,7 @@ export class OfertasService {
         .where('usuario','==', idUser)
         .get().then(docs => {
             var ofertas = []
-            docs.forEach( doc => {
+            docs.forEach(doc => {
                 let oferta = doc.data()
                 var idOferta = oferta.oferta
                 if (oferta.canjeado) {

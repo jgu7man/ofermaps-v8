@@ -3,6 +3,7 @@ import { Observable, of } from 'rxjs';
 
 import { PlanModel } from "../models/Planes.model";
 import { AngularFirestore } from '@angular/fire/firestore';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class PlanesServicio {
@@ -10,7 +11,8 @@ export class PlanesServicio {
   public planes =[]
   public plan
   constructor(
-      private fs: AngularFirestore
+    private fs: AngularFirestore,
+    private router: Router
     ) {
       
     }
@@ -62,6 +64,7 @@ export class PlanesServicio {
       this.fs.collection('empresas').ref.doc(log.m)
         .collection('plan').doc('actual').set(plan)
     }).then(res => {
+      this.router.navigate(['/empresa/Dashboard'])
     })
   }
 

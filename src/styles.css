@@ -13,6 +13,10 @@ a {
 
 /* GENERIC */
 
+* {
+    outline: none
+}
+
 
 /* Animación de rutas */
 
@@ -132,7 +136,7 @@ a {
 
 .navbarContent {
     display: block;
-    z-index: 6;
+    z-index: 12;
     position: relative;
     transition: all 0.3s;
     top: 0vh;
@@ -387,6 +391,15 @@ button:focus {
     background-color: #303030 !important;
 }
 
+.switch label input[type=checkbox]:checked+.lever {
+    background: linear-gradient(-90deg, #C1702D 50%, #C1272D) !important;
+    box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.4)
+}
+
+.switch label input[type=checkbox]:checked+.lever:after {
+    background-color: #C1272D !important;
+}
+
 @media screen and (min-width: 700px) {
     .oferForm {
         max-width: 420px;
@@ -417,7 +430,7 @@ button:focus {
 
 #navBar {
     position: absolute;
-    z-index: 5;
+    z-index: 10;
     background: #fff;
     border-radius: 2em;
     min-width: 100vw;
@@ -471,4 +484,19 @@ app-backbar {
     left: 50%;
     transform: translate(-50%, -50%);
     padding: 1em
+}
+
+
+/* TUTORIAL */
+
+.tutorial-overlay {
+    width: 100vw;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+    background: rgba(0, 0, 0, 0.6);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 12;
 }

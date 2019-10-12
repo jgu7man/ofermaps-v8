@@ -56,8 +56,7 @@ export class FondoComponent implements OnInit {
 
     var design = JSON.parse(sessionStorage.getItem('design'))
     this.idDesign = design.idDesign
-
-    return console.log("id's tomados")
+    return
   }
 
   renderImage() {

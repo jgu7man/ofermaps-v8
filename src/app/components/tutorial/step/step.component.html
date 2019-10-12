@@ -1,0 +1,24 @@
+<div class="steps-overlay">
+
+    <div class="row stepsRow">
+
+        <div class="col s12 stepsBar">
+
+            <button class="stepBtn left" [routerLink]="[step.prev]">
+                <i class="fas fa-chevron-circle-left"></i>
+            </button>
+
+            <div class="step">
+                <i class="fas fa-times-circle stepBtn" style="margin-top: 5px" [routerLink]="[sec.exit]"></i>
+                <p [innerHTML]="step.message"></p>
+            </div>
+
+            <button class="stepBtn right" (click)="nextStep(step.sig)" [routerLink]="[step.next]">
+                <i class="fas fa-chevron-circle-right"></i>
+            </button>
+
+        </div>
+        <p class="right offTuto" (click)="offTuto()">Saltar el tutorial</p>
+    </div>
+
+</div>

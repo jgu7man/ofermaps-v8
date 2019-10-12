@@ -27,6 +27,7 @@ export class CrearOfertaComponent implements OnInit {
   public idEmprsa: string
   public maxCodes: number
   public edit
+  public hasImage
 
   constructor(
     private _oferta: OfertasService,
@@ -34,7 +35,7 @@ export class CrearOfertaComponent implements OnInit {
     private ruta: ActivatedRoute,
     private router: Router
   ) {
-    this.oferta = new OfertaModel("",'', "", "", "", "", "",[],new Date, new Date, [], 0,0,0, "");
+    this.oferta = new OfertaModel("",'', "", "", "", "", "",[],new Date, new Date, [], 0,0,0, "", false);
     this.condiciones = ["EJEMPLO: aplican restrincciones"];
     this.ruta.params.subscribe(params => {
       this.idEmprsa = params['idEmpresa']
@@ -44,12 +45,14 @@ export class CrearOfertaComponent implements OnInit {
 
   async ngOnInit() {
     this.oferta.idEmpresa = this.idEmprsa
-    
-    
     var pend = JSON.parse(sessionStorage.getItem('pend'))
+    
     if (pend) {
       this.oferta = pend
       this.edit = true
+      if (pend.oImagen != "") {
+        this.hasImage = true
+      }
     }
 
     // $("#create").scrollTop(-100);
@@ -75,6 +78,7 @@ export class CrearOfertaComponent implements OnInit {
 
   ofertaPendiente() {
     sessionStorage.setItem('pend', JSON.stringify(this.oferta))
+    // sessionStorage.setItem('design', JSON.stringify())
     this.router.navigate(['/editor'])
   }
 

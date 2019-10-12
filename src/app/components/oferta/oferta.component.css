@@ -5,14 +5,14 @@
 }
 
 .ofertaContainer img {
-    height: 100%;
-    max-width: 150%;
+    width: 100%;
+    max-height: 90%;
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     transition: all .3s;
-    z-index: 6;
+    z-index: 10;
 }
 
 .zoomInOut {
@@ -22,7 +22,7 @@
 }
 
 .overlay {
-    z-index: 5;
+    z-index: 8;
 }
 
 #empImg img {
@@ -55,7 +55,7 @@
 }
 
 .oferOpen {
-    top: 16vh !important
+    top: 20vh !important
 }
 
 #oferInfo h5 {

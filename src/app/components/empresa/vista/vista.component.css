@@ -1,6 +1,6 @@
 .content {
     position: relative;
-    top: -2em;
+    top: -1em;
     padding-bottom: 3em;
 }
 
@@ -34,6 +34,7 @@
 .nombre {
     font-size: 1.5em;
     font-weight: 700;
+    text-transform: capitalize;
 }
 
 .oferta {

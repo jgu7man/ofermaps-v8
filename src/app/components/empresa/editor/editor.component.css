@@ -5,6 +5,14 @@
     background: #232020;
 }
 
+.oferNavbar {
+    height: 4em;
+    /* width: 100vw; */
+    position: fixed;
+    z-index: 1;
+    top: 0em;
+}
+
 app-preview {
     width: 100%;
 }

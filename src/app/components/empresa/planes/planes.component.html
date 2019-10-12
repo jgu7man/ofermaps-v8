@@ -1,18 +1,22 @@
 <app-e-navbar></app-e-navbar>
 <div class="container planes contenido">
-    <div class="plan center container" id="{{item.id}}" *ngFor="let item of planes">
-        <h2 class="planNombre"> {{item.nombre}} </h2>
-        <div class="precio">
-            <h4> ${{item.precio}}.°° </h4><br>
-            <span> {{item.periodo}} </span>
+    <div class="plan container" id="{{item.id}}" *ngFor="let item of planes">
+        <div class="col s12 center">
+            <h2 class="planNombre"> {{item.nombre}} </h2>
+            <div class="precio">
+                <h4> ${{item.precio}}.°° </h4><br>
+                <span> {{item.periodo}} </span>
+            </div>
+            <ul class="beneficios">
+                <li class="ben-item" *ngFor="let ben of item.beneficios">
+                    <span class="concepto">{{ben.concepto}} </span> <br>
+                    <span class="descripcion"> {{ben.descripcion}} </span>
+                </li>
+            </ul>
         </div>
-        <ul class="beneficios">
-            <li class="ben-item" *ngFor="let ben of item.beneficios">
-                <span class="concepto">{{ben.concepto}} </span> <br>
-                <span class="descripcion"> {{ben.descripcion}} </span>
-            </li>
-        </ul>
+        <div class="col s12">
+            <button class="boton btn-primary" [disabled]="item.nombre == actual" [ngClass]="{'actual': item.nombre == actual}" [routerLink]="['/empresa/pasarela/formadepago', item.id]"> CONTRATAR</button>
+        </div>
 
-        <button class="boton btn-primary" [disabled]="item.nombre == actual" [ngClass]="{'actual': item.nombre == actual}" [routerLink]="['/empresa/pasarela/formadepago', item.id]"> CONTRATAR</button>
     </div>
 </div>

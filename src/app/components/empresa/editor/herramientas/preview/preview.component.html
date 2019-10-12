@@ -13,14 +13,14 @@
                     <h4 class="center">GUARDAR</h4>
                     <div class="row descargarBtns">
                         <div class="col s12">
-                            <a href="">
-                                <button class="boton btn-primary">
+                            <a>
+                                <button class="boton btn-primary" (click)="onUsar()">
                                 Usar
                                 </button>
                             </a>
                         </div>
                         <div class="col s12">
-                            <a id="download" download="oferta.png">
+                            <a id="download" download="{{idDesign}}.png">
                                 <button class="boton btn-secondary" (click)="descargar()">
                                 Descargar
                                 </button>
@@ -31,19 +31,19 @@
                         <div class="col s12" id="share">
                             <p class="center">COMPARTIR</p><br>
                             <a href="https://www.facebook.com/sharer/sharer.php?uexample.php" target="_blank">
-                                <i class="fa fa-facebook-square    "></i>
+                                <i class="fab fa-facebook-square    "></i>
                             </a>
                             <a href="">
-                                <i class="fa fa-instagram"></i>
+                                <i class="fab fa-instagram"></i>
                             </a>
                             <a href="">
                                 <i class="fab fa-whatsapp-square"></i>
                             </a>
                             <a href="">
-                                <i class="fa fa-pinterest-square"></i>
+                                <i class="fab fa-pinterest-square"></i>
                             </a>
                             <a href="">
-                                <i class="fa fa-twitter-square"></i>
+                                <i class="fab fa-twitter-square"></i>
                             </a>
                         </div>
                     </div>
@@ -51,4 +51,5 @@
             </div>
         </div>
     </div>
+    <app-uploading class="overlay" style="display: none" [textValue]=""></app-uploading>
 </div>

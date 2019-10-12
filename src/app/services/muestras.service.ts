@@ -81,9 +81,7 @@ export class MuestrasService {
                 })
             })
         ).subscribe()
-        console.log('imagen de empresa agregada');
             
-        console.log('empresa asignada a usuario')
     
         this._router.navigate(['/admin/regist/oferta/'+this.idEmpresa])
     }
@@ -115,7 +113,6 @@ export class MuestrasService {
                       oferta.oImagen = res;
                       
                         sessionStorage.setItem('pend', JSON.stringify(oferta))
-                        console.log(oferta);
                         this.saveOferta(oferta)
                     })
                 })
@@ -123,15 +120,12 @@ export class MuestrasService {
         } else {
             $("app-loading").toggle()
             sessionStorage.setItem('pend', JSON.stringify(oferta))
-            console.log(oferta);
             this.saveOferta(oferta)
         }
         
     }
 
     async saveOferta(oferta: OfertaModel) {
-
-        console.log(oferta);
 
         await oferta.keywords.forEach(word => {
           var sinAcentos = word

@@ -6,6 +6,10 @@ agm-map {
     display: none;
 }
 
+#current {
+    display: none;
+}
+
 .boton-ver {
     height: 2em;
     text-align: center;

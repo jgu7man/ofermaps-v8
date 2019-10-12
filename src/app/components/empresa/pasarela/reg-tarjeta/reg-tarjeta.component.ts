@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Tarjeta } from '../../../../models/Tarjeta.Model';
 import { format } from 'util';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-reg-tarjeta',
@@ -14,7 +15,9 @@ export class RegTarjetaComponent implements OnInit {
   public card = [/\d/, /\d/, /\d/, /\d/,  ' ', /\d/, /\d/, /\d/, /\d/,  ' ',/\d/, /\d/, /\d/, /\d/,  ' ',/\d/, /\d/, /\d/, /\d/,  ' ']
 
 
-  constructor() { 
+  constructor(
+    private _location: Location
+  ) { 
     this.tarjeta = new Tarjeta('','', '', '', '', '', '', '', '', '')
    }
 
@@ -65,8 +68,8 @@ public master:boolean
 
 
   onSubmit() {
-    console.log(this.tarjeta);
-    window.location.href = 'empresa/pasarela/formadepago'
+    // window.location.href = 'empresa/pasarela/formadepago'
+    this._location.go('/empresa/pasarela/formadepago')
   }
 
 }

@@ -1,5 +1,6 @@
 <div class="textBox box" style="display: none">
-    <div id="listo">
+    <app-ordenar></app-ordenar>
+    <div id="listo" (click)="onListo()">
         <i class="fas fa-check-circle"></i>
         <span> LISTO</span>
     </div><br>
@@ -71,5 +72,5 @@
         </div>
     </div>
 
-    <app-ordenar></app-ordenar>
+
 </div>

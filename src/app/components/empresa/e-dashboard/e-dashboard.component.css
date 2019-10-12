@@ -1,5 +1,9 @@
 /* DASHBOARD */
 
+.dashboard {
+    padding-bottom: 3em;
+}
+
 .titleBar {
     position: fixed;
     background: #fff;

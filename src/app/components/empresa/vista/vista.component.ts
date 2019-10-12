@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { EmpresaService } from '../../../services/empresa.service';
 import { EmpresaModel } from '../../../models/Empresa.Model';
 import { UbicacionNegocioModel } from '../../../models/ubicacion.negocio.model';
@@ -31,7 +31,8 @@ export class VistaComponent implements OnInit {
     private _ubicacion: UbicacionNegocioService,
     private _ofertas: OfertasService,
     private _suscripciones: SuscripcionesService,
-    public auth: AuthService
+    public auth: AuthService,
+    public router: Router
   ) { 
     this.href.params.subscribe( params => {
       this.idEmpresa = params['id']
@@ -41,6 +42,10 @@ export class VistaComponent implements OnInit {
 
   ngOnInit() {
     this.getEmpresa()
+    var user = JSON.parse(localStorage.getItem('omlog'))
+    if (!user) {
+      this.router.navigate(['/'])
+    }
   }
 
   getEmpresa(){
@@ -48,6 +53,7 @@ export class VistaComponent implements OnInit {
       this.empresa = res
       this.getUbicacion();
       this.getOfertas();
+      this.getNumSuscriptores();
       $("app-loading").fadeToggle()
     })
   }
@@ -65,7 +71,7 @@ export class VistaComponent implements OnInit {
   }
 
   getNumSuscriptores(){
-    this._empresa.getNumSusc(this.idEmpresa).then( res => {
+    this._empresa.getNumSusc(this.idEmpresa).then(res => {
       this.suscriptores = res
     })
   }

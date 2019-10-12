@@ -18,20 +18,21 @@ export class SearchComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    
     this._busquedas.resProd.subscribe(res => {
-      this.byProd = res.result
+      this.byProd = res.results
       this.matchWord = res.word
     })
     this._busquedas.resEmp.subscribe(res => {
-      this.byEmp = res.result
+      this.byEmp = res.results
       this.matchWord = res.word
     })
     this._busquedas.resCat.subscribe(res => {
-      this.byCat = res.result
+      this.byCat = res.results
       this.matchWord = res.word
     })
     this._busquedas.resCity.subscribe(res => {
-      this.byCity = res.result
+      this.byCity = res.results
       this.matchWord = res.word
     })
   }

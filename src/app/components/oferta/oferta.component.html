@@ -1,9 +1,9 @@
 <app-backbar></app-backbar>
 <div class="ofertaContainer">
-    <img id="imgOferta" src="{{ oferta.oImagen }}" alt="" (click)="zoom()" />
+    <img id="imgOferta" src="{{ oferta.oImagen }}" alt="" />
 </div>
 <div class="navbarContent" id="oferInfo">
-    <div id="empImg" [routerLink]="['/empresa/vista', oferta.idEmpresa]">
+    <div id="empImg" [routerLink]="['/vista', oferta.idEmpresa]">
         <img src="{{ empresa.empImg }}" alt="" />
     </div>
     <h5>{{ oferta.oNombre }}</h5>
@@ -15,7 +15,7 @@
     <h5>{{ oferta.oProdserv }}</h5>
     <div class="datos center">
         <h6>La oferta vence:</h6>
-        <p>{{ oferta.oCaducidad.toLocaleDateString() }}</p>
+        <p class="white-text">{{ oferta.oCaducidad.toLocaleDateString() }}</p>
         <h6>CONDICIONES</h6>
         <ul>
             <li *ngIf="oferta.oCondiciones.length == 0">No aplica restricciones</li>
@@ -29,17 +29,23 @@
 
         <p *ngIf="caduca" class="red-text">La oferta ya caducó</p>
         <button [disabled]="caduca" class="codeBtn" (click)="getCode()">
-            PEDIR CÓDIGO
-        </button>
-        <p *ngIf="suscribed && !caduca">Suscribirte a las promociones de {{ empresa.empName }}</p>
+      PEDIR CÓDIGO
+    </button>
+        <p *ngIf="suscribed && !caduca">
+            Suscribirte a las promociones de {{ empresa.empName }}
+        </p>
         <p *ngIf="code != undefined">Ya has sacado código</p>
         <div *ngIf="caduca" class="col s12">
-            <p class="center">Suscríbete a {{empresa.empName}} para estar al tanto de sus promociones</p>
+            <p class="center">
+                Suscríbete a {{ empresa.empName }} para estar al tanto de sus promociones
+            </p>
             <button class="codeBtn" (click)="getCode()">
-                SUSCRIBIRSE
-            </button>
+        SUSCRIBIRSE
+      </button>
         </div>
     </div>
 </div>
-<app-ofer-navbar></app-ofer-navbar>
+<app-pop-email class="overlay" style="display: none" [idOferta]="idOferta" [user]="user" (sendCode)="catchCode($event)"></app-pop-email>
+<router-outlet></router-outlet>
+<app-ofer-navbar [idEmpresa]="idEmpresa"></app-ofer-navbar>
 <app-loading class="overlay"></app-loading>

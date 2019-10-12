@@ -132,6 +132,10 @@ form {
     top: -10px;
 }
 
+.upfile {
+    width: 100%;
+}
+
 @media screen and (min-width: 700px) {
     .cantDcto {
         margin-left: 2vw !important;

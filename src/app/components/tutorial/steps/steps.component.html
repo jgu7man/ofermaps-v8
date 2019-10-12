@@ -1,0 +1,22 @@
+<div class="steps-overlay">
+
+    <div class="row stepsRow">
+
+        <div class="col s12 stepsBar">
+
+            <button class="stepBtn left" [routerLink]="[step.prev]">
+                <i class="fas fa-chevron-circle-left"></i>
+            </button>
+
+            <div class="step">
+                <p [innerHTML]="step.message"></p>
+            </div>
+
+            <button class="stepBtn right" [routerLink]="[step.next]">
+                <i class="fas fa-chevron-circle-right"></i>
+            </button>
+
+        </div>
+    </div>
+
+</div>

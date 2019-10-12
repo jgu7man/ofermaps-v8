@@ -40,6 +40,7 @@ export class TopAreaComponent implements OnInit {
     this._busqueda.serachByProd(this.word)
     this._busqueda.searchByEmpresa(this.word)
     this._busqueda.searchByCategoriaEmpresa(this.word)
+    this._busqueda.searchByCiudad(this.word)
   }
 
 }

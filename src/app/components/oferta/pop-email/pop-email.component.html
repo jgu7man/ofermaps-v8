@@ -1,0 +1,23 @@
+<div class="pop-up container">
+    <div class="row">
+        <div class="col s12 right">
+            <i class="fas fa-times    "></i>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12">
+            <h6 class="center">
+                <b>Necesitas registrar tu correo electrónico para suscribirte</b>
+                <p>Sólo te lo pediremos una vez</p>
+            </h6>
+        </div>
+    </div>
+    <div class="row">
+        <form action="#" method="post" #getEmail="ngForm" onsubmit="return false">
+            <div class="col s12 input-field">
+                <input type="email" name="email" id="email" [(ngModel)]="email" #Email="ngModel" placeholder="Escribe tu email">
+            </div>
+            <button class="boton btn-primary" (click)="onSubmit()">GUARDAR</button>
+        </form>
+    </div>
+</div>

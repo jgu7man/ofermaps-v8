@@ -175,10 +175,10 @@
                 <div class="col s6">
                     <p>/{{maxCodes}} disponibles</p>
                 </div>
-                <div class="col s12 ads">
+                <!-- <div class="col s12 ads">
                     <a [routerLink]="['/empresa/planes']">ADQUIRIR MÁS</a><br />
                     <span class="recom">Puedes adquirir más ofertas aumentando tu plan actual</span>
-                </div>
+                </div> -->
             </div>
 
 
@@ -186,12 +186,13 @@
             <!-- IMAGEN DE OFERTA -->
             <div class="row">
                 <h5 class="center">Imagen de oferta</h5>
+                <p class="center red" *ngIf="hasImage"> <i class="fas fa-info-circle"></i> Tienes una imagen agregada <br></p>
                 <div class="col s6">
                     <p class="boton btn-secondary" (click)="ofertaPendiente()" style="width: 10em; float: left;">Diseñar</p>
                 </div>
                 <div class="col s6 file-field input-field">
                     <div class="">
-                        <span class="boton btn-secondary upfile" style="float: right; left: 75% !important"> Cargar</span>
+                        <span class="boton btn-secondary upfile" style="float: right; left: 50% !important"> Cargar</span>
                         <input type="file" name="oImagen" id="oImagen" (change)=cargarImg($event) />
                     </div>
                 </div>

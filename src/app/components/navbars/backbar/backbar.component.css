@@ -1,4 +1,8 @@
 .oferNavbar {
     height: 4em;
     width: 100vw;
+    position: fixed;
+    z-index: 0;
+    top: 0em;
+    background: #fff;
 }

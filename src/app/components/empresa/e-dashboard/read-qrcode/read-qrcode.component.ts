@@ -54,7 +54,6 @@ export class ReadQrcodeComponent implements OnInit {
   }
 
   onChangeCamera(e) {
-    console.log(e);
     this.cameras = e
   }
 

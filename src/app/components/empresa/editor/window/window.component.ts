@@ -34,6 +34,17 @@ export class WindowComponent implements OnInit, OnChanges {
     }
   }
 
+  onListo() {
+     var target = $(".intext").hasClass('seleccionado');
+    if( target ) {
+        $(".intext textarea").attr('disabled', 'disabled');
+        $(".intext").removeClass('seleccionado');
+        $(".textBox").slideToggle( );
+        $("#cajaTextos").slideToggle();
+      }
+      this._Editor.historial()
+  }
+
   changes(event) {
   }
 

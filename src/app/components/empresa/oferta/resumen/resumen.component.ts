@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { OfertaModel } from '../../../../models/Oferta.Model';
 import { OfertasService } from '../../../../services/ofertas.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-resumen',
@@ -19,9 +20,10 @@ export class ResumenComponent implements OnInit {
   constructor(
     private _ofertas: OfertasService,
     private ruta: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private fs: AngularFirestore
   ) {
-    this.oferta = new OfertaModel('','','','','','','',[],new Date, new Date, [], 0,0,0, '')
+    this.oferta = new OfertaModel('','','','','','','',[],new Date, new Date, [], 0,0,0, '', false)
    }
 
   ngOnInit() {
@@ -50,6 +52,7 @@ export class ResumenComponent implements OnInit {
     this.canjes = 100 - negCanjes
     var widthCanjes = this.canjes.toString() + '%'
     $(".canjesBar").css('width', widthCanjes)
+    
   }
 
   checkCad() {
@@ -57,16 +60,20 @@ export class ResumenComponent implements OnInit {
     var cad = this.oferta.oCaducidad
 
     if (cad < today) {
-      console.log('se caducó');
       this.caduc = true
     } else {
-      console.log('Aun no caduca');
     }
   }
 
   toEdit() {
     sessionStorage.setItem('pend', JSON.stringify(this.oferta))
     this.router.navigate(['/empresa/edit-of'])
+  }
+
+  setVisible(e) {
+    this.fs.collection('ofertas').ref.doc(this.idOferta).update({
+      visible: e.target.checked
+    })
   }
 
 }

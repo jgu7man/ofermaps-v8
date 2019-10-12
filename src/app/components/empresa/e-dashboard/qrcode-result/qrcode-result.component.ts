@@ -21,7 +21,7 @@ export class QrcodeResultComponent implements OnInit {
     private _ruta: ActivatedRoute
   ) {
     this.usuario = new UsuarioModel('', '', '', '')
-    this.oferta = new OfertaModel('','','','','','','',[],new Date, new Date, [],0,0,0,'')
+    this.oferta = new OfertaModel('','','','','','','',[],new Date, new Date, [],0,0,0,'', false)
    }
 
   ngOnInit() {
@@ -30,7 +30,6 @@ export class QrcodeResultComponent implements OnInit {
 
       var user = JSON.parse(localStorage.getItem('omlog'))
       this.result = await this._ofertas.canjeCode(this.code, user.m)
-      console.log(this.result);
       this.status = this.result.status
       this.usuario = this.result.usuario as UsuarioModel
       this.oferta = this.result.oferta as OfertaModel

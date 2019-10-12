@@ -14,6 +14,7 @@ export class OfertaModel {
     public oLimite: number,
     public oCodes: number,
     public oCanjes: number,
-    public oImagen: string
+    public oImagen: string,
+    public visible: boolean
   ) {}
 }

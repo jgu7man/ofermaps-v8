@@ -1,9 +1,9 @@
-<div class="row" id="navBar">
+<div class="row" id="navBar" (swipeup)="swipe($event.type)">
     <div class="col s2 icon center">
         <i class="fas fa-user-alt" [routerLink]="['/usuario']"></i>
     </div>
     <div class="col s2 icon center" *ngIf="admin">
-        <i class="fas fa-building" [routerLink]="['/empresa/Dashboard']" routerLinkActive="router-link-active"></i>
+        <i class="fas fa-building" [routerLink]="['/empresa']" routerLinkActive="router-link-active"></i>
     </div>
     <div id="navIcon" class="col s2">
         <img src="../../../../assets/img/oficons/up.png" alt="" (click)="menu = true" (click)="abrirMenu()" />

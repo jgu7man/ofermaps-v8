@@ -28,17 +28,30 @@ export class BusquedaService {
         var keyword = sinEspacios.toLowerCase()
 
         var prod = []
-        await this.fs.collection('ofertas').ref.where('keywords', 'array-contains', keyword)
-            .get().then(docs => {
-                docs.forEach(doc => {
-                    prod.push(doc.data())
-                    this.resProd.emit({
-                        word: word,
-                        results:prod
-                    })
+        var ofertas;
+        ofertas = await this.fs.collection('ofertas').ref
+            .where('keywords', 'array-contains', keyword).get()
+        
+        ofertas.forEach(doc => {
+                prod.push(doc.data())
+                this.resProd.emit({
+                    word: word,
+                    results: prod
+                })
             })
-        })
-        return prod
+            
+        if (ofertas.size == 0) {
+            ofertas = await this.fs.collection('ofertas_muestras').ref
+                .where('keywords', 'array-contains', keyword).get()
+            
+            ofertas.forEach(doc => {
+                prod.push(doc.data())
+                this.resProd.emit({
+                    word: word,
+                    results: prod
+                })
+            })
+        }
     }
 
     async searchByEmpresa(word: string) {
@@ -52,14 +65,28 @@ export class BusquedaService {
 
         var emp = []
         await this.fs.collection('empresas').ref.where('nNegocio', '==', keyword)
-            .get().then(docs => {
+            .get().then(async docs => {
                 docs.forEach(doc => {
                     emp.push(doc.data())
                     this.resEmp.emit({
                         word: word,
                         results:emp
                     })
-            })
+                })
+                
+                // MUESTRAS
+                if (docs.size == 0) {
+                    await this.fs.collection('empresas_muestras').ref.where('nNegocio', '==', keyword)
+                        .get().then(docs => {
+                            docs.forEach(doc => {
+                                emp.push(doc.data())
+                                this.resEmp.emit({
+                                    word: word,
+                                    results: emp
+                                })
+                            })
+                        })
+                }
         })
         return emp
     }
@@ -75,14 +102,28 @@ export class BusquedaService {
 
         var emp = []
         await this.fs.collection('empresas').ref.where('nCategoria', '==', keyword)
-            .get().then(docs => {
+            .get().then(async docs => {
                 docs.forEach(doc => {
                     emp.push(doc.data())
                     this.resCat.emit({
                         word: word,
                         results:emp
                     })
-            })
+                })
+                
+                // muestras
+                if (docs.size == 0) {
+                    await this.fs.collection('empresas_muestras').ref.where('nCategoria', '==', keyword)
+                        .get().then(docs => {
+                            docs.forEach(doc => {
+                                emp.push(doc.data())
+                                this.resCat.emit({
+                                    word: word,
+                                    results: emp
+                                })
+                            })
+                        })
+                }
         })
         return emp
     }
@@ -97,17 +138,37 @@ export class BusquedaService {
         var keyword = sinEspacios.toLowerCase()
 
         var ofers = []
-        await this.fs.collection('ubicaciones').ref.where('dCiudad', '==', keyword)
-            .get().then(docs => {
-                docs.forEach(async doc => {
-                    var oferta = await this.fs.collection('ofertas').ref
-                        .where('idEmpresa', '==', doc.data().idEmpresa).get()
-                    ofers.push(oferta)
+        var ubicaciones = await this.fs.collection('ubicaciones').ref
+            .where('dCiudad', '==', keyword).get()
+        
+        ubicaciones.forEach(async doc => {
+            var emp = doc.data().idEmpresa
+            
+            await this.fs.collection('ofertas').ref
+                .where('idEmpresa', '==', emp)
+                .get().then(ofertas => {
+                    ofertas.forEach(ofer => {
+                        ofers.push(ofer.data())
+                    })
                     this.resCity.emit({
                         word: word,
                         results:ofers
                     })
-            })
+                })
+                
+                // muestras
+            this.fs.collection('ofertas_muestras').ref
+                .where('idEmpresa', '==', emp)
+                .get().then(ofertas => {
+                    ofertas.forEach(ofert => {
+                        ofers.push(ofert.data())
+                    })
+                    this.resCity.emit({
+                        word: word,
+                        results: ofers
+                    })
+                })
         })
+        
     }
 }

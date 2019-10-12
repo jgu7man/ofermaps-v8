@@ -5,6 +5,7 @@ import { EmpresaService } from '../../../services/empresa.service';
 import { OfertasService } from '../../../services/ofertas.service';
 import { AuthService } from '../../../services/auth.service';
 import { PlanesServicio } from '../../../services/planes.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: "app-e-dashboard",
@@ -24,7 +25,8 @@ export class EDashboardComponent implements OnInit {
     private _empresa: EmpresaService,
     private _ofertas: OfertasService,
     private auth: AuthService,
-    private _plan: PlanesServicio
+    private _plan: PlanesServicio,
+    private router: Router
   ) {
     this.empresa = new EmpresaModel('', '', '', '', '', '', '', '', '', [])
     this.today = new Date
@@ -42,19 +44,10 @@ export class EDashboardComponent implements OnInit {
     this.empresa = await this._empresa.getEmpresa(this.usuario.m) 
     this.vence = await this._plan.getPlanActual(this.usuario.m)
     if (this.vence != 'gratis') {
-      console.log('el plan no es gratis');
       if (this.today > this.vence) {
-        console.log('el plan ya caducó');
         this._plan.setPlanGratis(this.usuario.m)
-      } else {
-        console.log('plan aun no vence');
       }
-    } else {
-      console.log('el plan es gratis');
     }
-    // media query's
-
-    
   }
 
   

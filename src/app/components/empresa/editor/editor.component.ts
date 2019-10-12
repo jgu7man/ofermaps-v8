@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
+import { DesignModel } from 'src/app/models/design.model';
 
 
 
@@ -12,12 +13,14 @@ import { Router } from '@angular/router';
 export class EditorComponent implements OnInit {
 
   public idEmpresa: string
-  public design: any
+  public design: DesignModel
   public diseno_free: boolean
   constructor(
     private fs: AngularFirestore,
     private router: Router
-  ) {}
+  ) {
+    this.design = new DesignModel('', '', '')
+  }
 
   ngOnInit(){
     if (window.screen.width <= 700) {
@@ -32,7 +35,9 @@ export class EditorComponent implements OnInit {
     }
 
     this.design = JSON.parse(sessionStorage.getItem('design'))
+    
     if (!this.design) {
+      this.design = new DesignModel('', '', '')
       this.getEmpresa()
     } 
     

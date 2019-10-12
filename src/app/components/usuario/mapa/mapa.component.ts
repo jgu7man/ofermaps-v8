@@ -69,7 +69,6 @@ export class MapaComponent implements OnInit {
   ofertasPorCiudad(){
     this._ubicacion.getForCiudad(this.zone).then(res => {
       this.ofertas = res
-      console.log(res);
       if (res == []) {
         $("app-loading").fadeOut()
         $("no_ofers").toggle()

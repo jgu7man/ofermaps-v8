@@ -7,6 +7,7 @@ import { switchMap } from "rxjs/operators";
 import { UserInterface } from "../models/user.model";
 import { AngularFireAuth } from '@angular/fire/auth';
 import { UbicacionNegocioService } from './Ubicacion.Negocio.Service';
+import { AlertaService } from './alertas.service';
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +22,8 @@ export class AuthService {
     private afAuth: AngularFireAuth,
     private afs: AngularFirestore,
     private router: Router,
-    private _ubicacion: UbicacionNegocioService
+    private _ubicacion: UbicacionNegocioService,
+    private _alerta: AlertaService
   ) { 
     this.user$ = this.afAuth.authState.pipe(
       switchMap( user => {
@@ -36,16 +38,24 @@ export class AuthService {
   
   async googleSingIn(){
      $("app-loading").toggle()
-     const provider = new auth.GoogleAuthProvider();
+     try {
+       const provider = new auth.GoogleAuthProvider();
      const credential = await this.afAuth.auth.signInWithPopup(provider);
      return this.updateUserData(credential.user)
+     } catch (error) {
+       
+     }
   }
   
   async facebookSingIn(){
      $("app-loading").toggle()
-     const provider = new auth.FacebookAuthProvider();
-     const credential = await this.afAuth.auth.signInWithPopup(provider);
-     return this.updateUserData(credential.user)
+     try {
+        const provider = new auth.FacebookAuthProvider();
+        const credential = await this.afAuth.auth.signInWithPopup(provider);
+        return this.updateUserData(credential.user)
+     } catch (error) {
+       this._alerta.sendAlerta(error)
+     }
    }
 
    async singOut(){

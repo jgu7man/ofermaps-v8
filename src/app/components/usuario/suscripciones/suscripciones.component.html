@@ -2,7 +2,7 @@
     <div class="col s12">
         <h5>Suscripciones</h5>
         <div class="corousel" *ngIf="suscripciones">
-            <div class="avatarImg" *ngFor="let emp of suscripciones" [routerLink]="['/empresa/vista', emp.empId]">
+            <div class="avatarImg" *ngFor="let emp of suscripciones" [routerLink]="['/vista', emp.empId]">
                 <img [src]="emp.empImg" [alt]="emp.empName">
             </div>
             <p *ngIf="suscripciones.length == 0">Aun no te has inscrito a alguna empresa</p>

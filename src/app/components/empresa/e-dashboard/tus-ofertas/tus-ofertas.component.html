@@ -12,6 +12,7 @@
 
         <div class="row">
             <div class="col s6 ofer" *ngFor="let ofer of ofertasEmpresa">
+                <i class="fas" [ngClass]="{'fa-eye': ofer.data.visible, 'fa-eye-slash': !ofer.data.visible}"></i>
                 <img src="{{ ofer.data.oImagen }}" id="{{ ofer.idOfer }}" alt="" [routerLink]="['/empresa/oResumen', ofer.idOfer]" />
             </div>
         </div>

@@ -24,7 +24,7 @@ export class VerCodeComponent implements OnInit {
     private _empresa: EmpresaService,
   ) {
     this._route.params.subscribe( params => { this.idOferta = params['id']})
-    this.oferta = new OfertaModel('','','','','','','',[], new Date,new Date,[],0,0,0,'')
+    this.oferta = new OfertaModel('','','','','','','',[], new Date,new Date,[],0,0,0,'', false)
    }
 
   async ngOnInit() {

@@ -153,7 +153,7 @@
             <!-- LIMITE DE OFERTAS -->
             <div class="row">
                 <div class="input-field col s6">
-                    <input type="number" name="oLimite" [max]="maxCodes" class="ofinput" id="oLimite" required #oLimite="ngModel" [(ngModel)]="oferta.oLimite" autofocus />
+                    <input type="number" name="oLimite" [max]="maxCodes" class="ofinput" id="oLimite" required #oLimite="ngModel" [(ngModel)]="oferta.oLimite" />
                     <label for="oLimte">Limite de OFERTAS</label>
                     <div *ngIf="oLimite.invalid && (oLimite.dirty || oLimite.touched)">
                         <span class="red" *ngIf="oLimite.errors['required']">
@@ -164,10 +164,10 @@
                 <div class="col s6">
                     <p>/{{maxCodes}} disponibles</p>
                 </div>
-                <div class="col s12 ads">
+                <!-- <div class="col s12 ads">
                     <a [routerLink]="['/empresa/planes']">ADQUIRIR MÁS</a><br />
                     <span class="recom">Puedes adquirir más ofertas aumentando tu plan actual</span>
-                </div>
+                </div> -->
             </div>
 
             <!-- IMAGEN DE OFERTA -->

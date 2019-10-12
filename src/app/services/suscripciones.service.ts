@@ -11,16 +11,33 @@ export class SuscripcionesService{
       private _empresas: EmpresaService
     ) { }
     
-    async suscribir(idEmpresa, name, email, uid){
-        await this.fs.collection('empresas').doc(idEmpresa)
+  async suscribir(idEmpresa, name, email, uid) {
+      
+    // check muestras
+    var emp = await this.fs.collection('empresas').ref.doc(idEmpresa).get()
+    if (emp.exists) {
+      
+      await this.fs.collection('empresas').doc(idEmpresa)
+      .collection('suscriptores').doc(uid).set({
+          nombre: name,
+          email: email,
+          date: new Date,
+          uid: uid
+      })
+      
+    } else {
+
+      await this.fs.collection('empresas_muestras').doc(idEmpresa)
         .collection('suscriptores').doc(uid).set({
             nombre: name,
             email: email,
             date: new Date,
             uid: uid
         })
+
+    }
     
-      await this.fs.collection('users').ref.doc(uid)
+      await this.fs.collection('usuarios').ref.doc(uid)
         .collection('suscripciones').doc(idEmpresa).set({
           idEmpresa: idEmpresa
         })
@@ -28,17 +45,20 @@ export class SuscripcionesService{
 
     unSuscribe(idEmpresa, uid) {
     
-        this.fs.collection('users').ref.doc(uid)
+        this.fs.collection('usuarios').ref.doc(uid)
           .collection('suscripciones').doc(idEmpresa).delete()
         
         this.fs.collection('empresas').ref.doc(idEmpresa)
+        .collection('suscriptores').doc(uid).delete()
+      
+        this.fs.collection('empresas_muestras').ref.doc(idEmpresa)
           .collection('suscriptores').doc(uid).delete()
   }
   
   async getSuscripByUser(id) {
     var suscripciones = [],
         actualizaciones = []
-    this.fs.collection('users').ref.doc(id)
+    this.fs.collection('usuarios').ref.doc(id)
       .collection('suscripciones').get().then(docs => {
         docs.forEach(doc => {
           this._empresas.getEmpresaName(doc.id).then(emp => {
@@ -66,12 +86,26 @@ export class SuscripcionesService{
         }
       })
     
+    await this.fs.collection('ofertas_muestras').ref
+      .where('idEmpresa', '==', idEmpresa)
+      .where('oCaducidad', '>', today)
+      .get().then(res => {
+        if (res.size > 0) {
+          last = res.docs[0].data()
+        }
+      })
+    
     return last
   }
 
   async checkSuscripcion(idEmpresa, uid) {
     var suscription = await this.fs.collection('empresas').ref.doc(idEmpresa)
       .collection('suscriptores').where('uid', '==', uid).get()
+    if (suscription.empty) {
+      var suscription = await this.fs.collection('empresas_muestras').ref.doc(idEmpresa)
+      .collection('suscriptores').where('uid', '==', uid).get()
+    }
     return suscription.empty
   }
+  
 }

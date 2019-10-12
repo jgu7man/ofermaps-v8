@@ -36,7 +36,7 @@ export class EditarOfertaComponent implements OnInit {
     private ruta: ActivatedRoute,
     private router: Router
   ) {
-    this.oferta = new OfertaModel("",'', "", "", "", "", "",[],new Date, new Date, [], 0,0,0, "");
+    this.oferta = new OfertaModel("",'', "", "", "", "", "",[],new Date, new Date, [], 0,0,0, "", false);
     // this.ruta.params.subscribe(params => {
     //   this.idEmprsa = params['id']
     // })

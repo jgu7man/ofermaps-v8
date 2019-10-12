@@ -28,6 +28,7 @@ export class CrearOfertaPruebaComponent implements OnInit {
   public idEmprsa: string
   public maxCodes: number = 1000
   public edit
+  public hasImage: boolean = false
 
   constructor(
     private _muestra: MuestrasService,
@@ -35,7 +36,7 @@ export class CrearOfertaPruebaComponent implements OnInit {
     private ruta: ActivatedRoute,
     private router: Router
   ) {
-    this.oferta = new OfertaModel("",'', "", "", "", "", "",[],new Date, new Date, [], 0,0,0, "");
+    this.oferta = new OfertaModel("",'', "", "", "", "", "",[],new Date, new Date, [], 0,0,0, "", false);
     this.condiciones = ["EJEMPLO: aplican restrincciones"];
     this.ruta.params.subscribe(params => {
       this.idEmprsa = params['idEmpresa']
@@ -48,9 +49,13 @@ export class CrearOfertaPruebaComponent implements OnInit {
     
     
     var pend = JSON.parse(sessionStorage.getItem('pend'))
+    
     if (pend) {
       this.oferta = pend
       this.edit = true
+      if (pend.oImagen != "") {
+        this.hasImage = true
+      }
     }
 
     

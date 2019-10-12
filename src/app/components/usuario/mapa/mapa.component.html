@@ -1,7 +1,6 @@
 <agm-map [gestureHandling]='"greedy"' [latitude]="lat" [longitude]="lng" [zoom]="15" (mapClick)="changeLocation($event)" [streetViewControl]="false" [zoomControl]="false" [clickableIcons]="false">
     <agm-marker [latitude]="lat" [longitude]="lng" [iconUrl]="iconMap.iconCurrent"></agm-marker>
-
-    <agm-marker *ngFor="let oferta of ofertas" [latitude]="oferta.oferLat" [longitude]="oferta.oferLong" [iconUrl]="iconMap.iconUrl">
+    <agm-marker *ngFor="let oferta of ofertas" [ngStyle]="{'display:none': !oferta.visible}" [latitude]="oferta.oferLat" [longitude]="oferta.oferLong" [iconUrl]="iconMap.iconUrl">
         <agm-info-window>
             <h6 class="oferLink">
                 {{ oferta.oferName }}
@@ -11,6 +10,7 @@
             </p>
         </agm-info-window>
     </agm-marker>
+
 </agm-map>
 <div id="no_ofers" class="overlay" style="display: none">
     <div class="pop-up center">
@@ -18,5 +18,6 @@
     </div>
     <button (click)="onClosePop()" class="boton btn-secondary">Cerrar</button>
 </div>
+
 <app-lista *ngIf="ofertas" [ofertas]="ofertas" [ciudad]="zone" id="listaMode"></app-lista>
 <app-loading class="overlay" style="display: none"></app-loading>

@@ -53,6 +53,11 @@ import { RegistEmpresaComponent } from './components/admin/pruebas/personalizar/
 import { RegistUbicacionComponent } from './components/admin/pruebas/ubicacion/ubicacion.component';
 import { RegistMapaEmpresaComponent } from './components/admin/pruebas/mapa-empresa/mapa-empresa.component';
 import { CrearOfertaPruebaComponent } from './components/admin/pruebas/crear-oferta/crear-oferta.component';
+import { StepsComponent } from './components/tutorial/steps/steps.component';
+import { TutorialComponent } from './components/tutorial/tutorial.component';
+import { InicioTutorialComponent } from './components/tutorial/inicio-tutorial/inicio-tutorial.component';
+import { StepComponent } from './components/tutorial/step/step.component';
+import { DirectionMapComponent } from './components/usuario/direction-map/direction-map.component';
 
 const routes: Routes = [
   { path: 'uploading', component: UploadingComponent},
@@ -64,16 +69,27 @@ const routes: Routes = [
     { path: "slide2", component: Slider2Component, data: { page: 2 } },
     { path: "slide3", component: Slider3Component, data: { page: 3 } }
   ]},
-  { path: "registro", component: RegistroComponent },
+  
+  { path: "registro", component: RegistMainComponent, children:[
+    { path: "empresa", component: PersonalizarComponent },
+    { path: "mapa-empresa", component: MapaEmpresaComponent },
+    { path: "ubicacion", component: UbicacionComponent },
+  ] },
+  
   { path: "login", component: LoginComponent },
     
   // { path: "empresa", redirectTo: "/empresa/login", pathMatch: "full" },
   { path: "empresa", component: EmpresaComponent, children: [
-    { path: "", component: EDashboardComponent },
+    { path: "", component: EDashboardComponent, children: [
+      { path: 'tutorial', component: TutorialComponent, children:[
+        { path: '', component: InicioTutorialComponent },
+        { path: 'step/:sec/:num', component: StepComponent}
+      ] },
+    ] },
     
     { path: 'editar/:id', component: EditarEmpresaComponent },
     { path: 'verubicacion/:idEmpresa', component: VerUbicacionComponent},
-    { path: "Dashboard", component: EDashboardComponent },
+    
     { path: "crear-oferta/:idEmpresa", component: CrearOfertaComponent },
     { path: "previo", component: PrevioComponent },
     { path: 'oResumen/:id', component: ResumenComponent },
@@ -81,7 +97,7 @@ const routes: Routes = [
     { path: 'previo-edit', component: PrevioEditComponent },
     { path: 'reader', component: ReadQrcodeComponent},
     { path: 'code-result/:code', component: QrcodeResultComponent },
-    { path: "vista/:id", component: VistaComponent },
+    
     { path: "planes", component: PlanesComponent },
     { path: 'cuenta', component: CuentaComponent },
     { path: "pasarela", component: PasarelaComponent, children: [
@@ -105,16 +121,30 @@ const routes: Routes = [
   ]
   },
   
-  { path: "oferta/:id", component: OfertaComponent},
-  { path: "inicio", component: InicioComponent },
-  {
-    path: "usuario", component: UserDashboardComponent, children: [
-    { path: "personalizar", component: PersonalizarComponent },
-    { path: "mapa-empresa", component: MapaEmpresaComponent },
-    { path: "ubicacion", component: UbicacionComponent },
-  ]},
+  { path: "oferta/:id", component: OfertaComponent, children: [
+    { path: 'tutorial', component: TutorialComponent, children:[
+      { path: '', component: InicioTutorialComponent },
+      { path: 'step/:sec/:num', component: StepComponent}
+    ] },
+  ] },
+  { path: 'direction/:id', component: DirectionMapComponent},
+  { path: "vista/:id", component: VistaComponent },
+  { path: "inicio", component: InicioComponent, children: [
+    { path: 'tutorial', component: TutorialComponent, children:[
+      { path: '', component: InicioTutorialComponent },
+      { path: 'step/:sec/:num', component: StepComponent}
+    ] },
+  ] },
+  { path: "usuario", component: UserDashboardComponent, children: [
+      { path: 'tutorial', component: TutorialComponent, children:[
+        { path: '', component: InicioTutorialComponent },
+        { path: 'step/:sec/:num', component: StepComponent}
+      ] },
+    ] },
+
   { path: "code/:id", component: VerCodeComponent },
   { path: "pdp", component: PdpComponent },
+
   { path: 'admin/regist/empresa', component: RegistEmpresaComponent },
   { path: 'admin/regist/ubicacion', component: RegistUbicacionComponent },
   { path: 'admin/regist/mapa', component: RegistMapaEmpresaComponent },

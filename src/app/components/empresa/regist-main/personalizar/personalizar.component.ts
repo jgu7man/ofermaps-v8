@@ -39,6 +39,8 @@ export class PersonalizarComponent implements OnInit {
     var user = JSON.parse(localStorage.getItem('omlog'))
     if (user.m) {
       this._router.navigate(['/empresa/Dashboard'])
+    } else {
+
     }
 
     (function() {
@@ -102,11 +104,11 @@ export class PersonalizarComponent implements OnInit {
             this.fs.collection('empCategorias').ref.doc('otros').set({
               keywords: [this.otraCategoria]
             }, { merge: true }).then(res => {
-              this._router.navigate(['/admin/regist/ubicacion'])
+              // this._router.navigate(['/registro/ubicacion'])
             })
       } else {
         // si existe, no hacer nada
-            this._router.navigate(['/admin/regist/ubicacion'])
+            // this._router.navigate(['/registro/ubicacion'])
           }
       
     } else {

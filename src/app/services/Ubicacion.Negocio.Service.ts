@@ -54,14 +54,18 @@ export class UbicacionNegocioService {
     var sinMayus = sinEspacios.toLowerCase()
     var ciudad = sinMayus
 
-    console.log(ciudad);
+    const today = new Date()
 
     await this.Collection.ref.where('dCiudad', '==', ciudad).get().then(docs => {
       docs.forEach(async doc => {
 
         var ofers = await this.fs.collection('ofertas').ref.where('idEmpresa', '==', doc.data().idEmpresa).get()
         ofers.forEach(ofer => {
-            console.log(ofer.data());
+          if (!ofer.data().visible) {
+            
+          } else if (ofer.data().oCaducidad < today ) {
+            console.log(ofer.id, '- oferta caducada');
+          } else {
             ubicaciones.push({
               oferId: ofer.id,
               oferName: ofer.data().oNombre,
@@ -69,10 +73,16 @@ export class UbicacionNegocioService {
               oferLong: doc.data().long,
               oferImg: ofer.data().oImagen
             })
-          })
+          }
+        })
         
         var ofers_m = await this.fs.collection('ofertas_muestras').ref.where('idEmpresa', '==', doc.data().idEmpresa).get()
         ofers_m.forEach(ofer => {
+          if (!ofer.data().visible) {
+            
+          } else if (ofer.data().oCaducidad < today) {
+            
+          } else {
             ubicaciones.push({
               oferId: ofer.id,
               oferName: ofer.data().oNombre,
@@ -80,17 +90,32 @@ export class UbicacionNegocioService {
               oferLong: doc.data().long,
               oferImg: ofer.data().oImagen
             })
-          })
+          }
+        })
       })
     })
     return ubicaciones
   }
 
-  async getUbi_oferta(idEmpresa,zone){
-    var ubicacion: any;
-    await this.Collection.ref.where('idEmpresa', '==', idEmpresa).get().then( doc => {
-        doc.forEach( doc => {
-          ubicacion = doc.data()
+  async getUbi_oferta(idEmpresa, zone) {
+    var sinAcentos = zone
+      .normalize('NFD')
+      .replace(/([^n\u0300-\u036f]|n(?!\u0303(?![\u0300-\u036f])))[\u0300-\u036f]+/gi,"$1")
+      .normalize();
+    var sinEspacios = sinAcentos.trim()
+    var sinMayus = sinEspacios.toLowerCase()
+    var ciudad = sinMayus
+    var ubicacion = [];
+
+    console.log(idEmpresa, ciudad);
+    await this.Collection.ref
+      .where('idEmpresa', '==', idEmpresa)
+      .where('dCiudad', '==', ciudad)
+      .get().then(docs => {
+        console.log(docs.docs);
+        docs.forEach(doc => {
+          console.log(doc.data());
+          ubicacion.push(doc.data())
         })
     })
     return ubicacion
@@ -109,6 +134,11 @@ export class UbicacionNegocioService {
       })
     
     return this.UbicacionesNegocios
+  }
+
+  geoPolitical(lat: number, lng: number): Observable<any> {
+    return this._http.get(
+      "https://maps.googleapis.com/maps/api/geocode/json?latlng=" + lat + "," + lng + "&location_type=APPROXIMATE&result_type=locality&key=" + this.Key);
   }
 
   geoCoder(lat: number, lng: number): Observable<any> {

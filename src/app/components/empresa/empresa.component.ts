@@ -29,21 +29,36 @@ export class EmpresaComponent implements OnInit {
 
   ngOnInit() {
     var log = JSON.parse(localStorage.getItem('omlog'))
-        if (!log) {
-          this.router.navigate(['/inicio'])
-        } else if (!log.m) {
-          this.fs.collection('usuarios').ref.doc(log.i).get().then(doc => {
-            if (doc.data().idEmpresa) {
+    
+    if (!log) {
+      this.router.navigate(['/inicio'])
+    } else if (!log.m) {
+      this.fs.collection('usuarios').ref.doc(log.i).get().then(doc => {
+        if (doc.data().idEmpresa) {
               this.log.m = doc.data().idEmpresa
               this.log.i = log.i
               this.log.z = log.z
               this.setStorage()
             } else {
-              // this.router.navigate(['/inicio'])
+              this.router.navigate(['/inicio'])
               return
             }
           })
-        }
+          // revisar si tiene activado los tutoriales
+        } else  {
+          this.fs.collection('usuarios').ref.doc(log.i)
+            .collection('tutoriales').doc('empresa').get().then(doc => {
+              // revisar si ya vió el tutorial de esta seccion
+              if (!doc.exists) {
+                this.router.navigate(['/empresa/tutorial'])
+                // si ya lo vió, revisar si lo tiene activado
+              } else if( doc.data().value == false ){
+                this.router.navigate(['/empresa/tutorial'])
+              } else {
+    
+              }
+            })
+    }
   }
 
   getEmp(uid) {

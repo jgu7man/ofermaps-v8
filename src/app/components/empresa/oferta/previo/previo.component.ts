@@ -34,10 +34,14 @@ export class PrevioComponent implements OnInit {
     
     
     var pend = JSON.parse(sessionStorage.getItem('pend'))
-    if (pend){
-      this.oferta = pend
-      this.caducidad = new Date(this.oferta.oCaducidad)
-      this.reg = new Date(this.oferta.oPublicado)
+    if (pend) {
+      if (pend.oTipo == "") {
+        this.router.navigate(['/empresa/crear-oferta/' + user.m])
+      } else {
+        this.oferta = pend
+        this.caducidad = new Date(this.oferta.oCaducidad)
+        this.reg = new Date(this.oferta.oPublicado)
+      }
     } else {
       this.router.navigate(['/empresa/Dashboard'])
     }
@@ -48,11 +52,18 @@ export class PrevioComponent implements OnInit {
     $("app-loading").fadeToggle()
     this.oferta.oCaducidad = this.caducidad
     this.oferta.oPublicado = this.reg
-    this._ofertas.saveOferta(this.oferta)
     this.planRef.get().then(doc => {
-      this.planRef.update({
-        publicaciones: doc.data().publicaciones - 1
-      })
+      if (doc.data().publicaciones == 0) {
+        this.oferta.visible = false
+        this._ofertas.saveOferta(this.oferta)
+        
+      } else {
+        this.oferta.visible = true
+        this._ofertas.saveOferta(this.oferta)
+        this.planRef.update({
+          publicaciones: doc.data().publicaciones - 1
+        })
+      }
     })
   }
 

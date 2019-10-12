@@ -52,9 +52,7 @@ export class HomeSliderComponent implements OnInit {
 
   ngOnInit() {
     this.href();
-    this.next();
     this.getUbication()
-    
   }
 
   mexico = `../../../assets/img/colima.png`
@@ -87,26 +85,40 @@ export class HomeSliderComponent implements OnInit {
   
   
   href() {
-    this.slide = window.location.href;
+    var path = window.location.href;
+    var pathSplit = path.split('/')
+    var slideNum = pathSplit[pathSplit.length - 1]
+    this.slide = parseInt(slideNum)
   }
   next() {
+    this.href();
     
-    var nextbtn = document.getElementById("next");
-    nextbtn.addEventListener('click', ()=> {
-      this.href();
-
-      if(this.slide.includes('1')) {
-        this.router.navigate(['./slider/slide2']);
-      }
-      if (this.slide.includes('2')) {
-        this.router.navigate(['./slider/slide3']);
-      }
-      if (this.slide.includes('3')) {
+    switch (this.slide) {
+      case 1:
+        this.router.navigate(['/slider/2']);
+        break;
+      case 2:
+        this.router.navigate(['/slider/3']);
+        break;
+      case 3:
         sessionStorage.setItem('omvisited', 'visited')
         this.router.navigate(['/']);
-      } 
+        break;
+    
+      default:
+        break;
+    }
 
-    });
+      // if(this.slide.includes('1')) {
+      //   this.router.navigate(['./slider/slide2']);
+      // }
+      // if (this.slide.includes('2')) {
+      //   this.router.navigate(['./slider/slide3']);
+      // }
+      // if (this.slide.includes('3')) {
+      //   sessionStorage.setItem('omvisited', 'visited')
+      //   this.router.navigate(['/']);
+      // } 
   }
 
 

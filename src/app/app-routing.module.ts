@@ -64,10 +64,10 @@ const routes: Routes = [
   { path: "", component: HomeComponent, data: { page: 5 } },
 
   { path: "slider", component: HomeSliderComponent, data: { page: 4 }, children: [
-    { path: "", redirectTo: 'slide1', pathMatch: 'full' },
-    { path: "slide1", component: Slider1Component, data: { page: 1 } },
-    { path: "slide2", component: Slider2Component, data: { page: 2 } },
-    { path: "slide3", component: Slider3Component, data: { page: 3 } }
+    { path: "", redirectTo: '1', pathMatch: 'full' },
+    { path: "1", component: Slider1Component, data: { page: 1 } },
+    { path: "2", component: Slider2Component, data: { page: 2 } },
+    { path: "3", component: Slider3Component, data: { page: 3 } }
   ]},
   
   { path: "registro", component: RegistMainComponent, children:[

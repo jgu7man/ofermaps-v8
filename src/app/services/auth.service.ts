@@ -82,7 +82,9 @@ export class AuthService {
           zone: trimZone
         }, { merge: true })
 
-        localStorage.setItem('omvisited','visited')
+        localStorage.setItem('omdata', JSON.stringify({
+          v:'visited'
+        }))
 
       });
 

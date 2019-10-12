@@ -28,11 +28,11 @@ export class HomeComponent implements OnInit {
     private _ubicacion: UbicacionNegocioService
   ) { 
     this.Usuario = new UsuarioModel('', '', '', '')
-    var lVisited = localStorage.getItem('omvisited')
+    var data = localStorage.getItem('omdata')
     var sVisited = sessionStorage.getItem('omvisited')
     if (window.screen.width <= 700) { // 768px portrait
       $("app-aviso").toggle()
-      if (!lVisited && !sVisited) {
+      if (!data && !sVisited) {
         router.navigate(['slider'])
       }
     } 

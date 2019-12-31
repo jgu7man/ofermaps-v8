@@ -6,8 +6,10 @@
             </div>
 
             <div id="searchBar">
-                <input type="text" name="buscar" id="buscar" [(ngModel)]="word" (keyup.enter)="onSearch()" />
-                <button><i class="fas fa-search"></i></button>
+                <form action="#" method="post" #search="ngForm" (ngSubmit)="onSearch()" onsubmit="return false">
+                    <input type="text" name="buscar" id="buscar" [(ngModel)]="word" />
+                    <button><i class="fas fa-search" ></i></button>
+                </form>
             </div>
 
             <div id="viewMode" (click)="viewMode()">

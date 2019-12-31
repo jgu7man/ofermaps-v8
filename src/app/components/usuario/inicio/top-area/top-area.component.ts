@@ -36,6 +36,7 @@ export class TopAreaComponent implements OnInit {
   }
 
   onSearch() {
+    console.log('onSearch');
     this._busqueda.onSearch()
     this._busqueda.serachByProd(this.word)
     this._busqueda.searchByEmpresa(this.word)
